@@ -1,2 +1,2 @@
 # pokemusic
-clawitzer fav music: shea shanties 
+clawitzer's fav music: shea shanties 
