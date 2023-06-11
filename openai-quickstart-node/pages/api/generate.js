@@ -29,7 +29,8 @@ export default async function (req, res) {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: generatePrompt(animal),
-      temperature: 0.6,
+      max_tokens: 400,
+      temperature: 1,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
@@ -51,12 +52,13 @@ export default async function (req, res) {
 function generatePrompt(animal) {
   const capitalizedAnimal =
     animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Suggest three names for an animal that is a superhero.
-
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: ${capitalizedAnimal}
-Names:`;
+  return `Suggest a small genre of music that a Pokemon would listen to based on it's characteristics, personality, or what it is known for. Then explain why
+  Pokemon: Bulbasaur
+  Genre of Music and Why: Acoustic/Folk: The simplicity and organic qualities of acoustic and folk music might appeal to Bulbasaur. These genres often feature heartfelt lyrics and melodies that capture the essence of nature and evoke a sense of connection to the earth.
+  Pokemon: Piplup
+  Genre of Music and Why: Bubblegum Pop: Piplup's association with bubbles and its cute appearance could make it inclined towards bubblegum pop music. This genre typically features light-hearted and catchy tunes that are fun and easy to sing along to.
+  Pokemon: Clawitzer
+  Genre of Music and Why: Sea Shanties: Clawitzer is a Water-type Pokémon, so it might find a connection to its aquatic habitat through the melodies of sea shanties. These traditional maritime songs often evoke the spirit of sailing and the ocean, which could resonate with Clawitzer's affinity for water.
+  Pokemon: ${capitalizedAnimal}
+  Genre of Music and Why:`;
 }
