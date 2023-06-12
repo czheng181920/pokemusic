@@ -45,7 +45,7 @@ const IndexPage: NextPage = () => {
           <input
             type="text"
             name="pokemon"
-            placeholder="Enter an pokemon"
+            placeholder="Enter a pokemon"
             value={pokemonInput}
             onChange={(e) => setPokemonInput(e.target.value)}
           />
