@@ -1,63 +1,60 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import Counter from '../features/counter/Counter'
-import styles from '../styles/Home.module.css'
+import styles from "./index.module.css";
+import { useState } from 'react'
 
 const IndexPage: NextPage = () => {
+  const [pokemonInput, setPokemonInput] = useState("");
+  const [result, setResult] = useState();
+
+  async function onSubmit(event: any) {
+    event.preventDefault();
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ pokemon: pokemonInput }),
+      });
+
+      const data = await response.json();
+      if (response.status !== 200) {
+        throw data.error || new Error(`Request failed with status ${response.status}`);
+      }
+
+      setResult(data.result);
+      setPokemonInput("");
+    } catch(error: any) {
+      // Consider implementing your own error handling logic here
+      console.error(error);
+      alert(error.message);
+    }
+  }
+
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Redux Toolkit</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>OpenAI Quickstart</title>
       </Head>
-      <header className={styles.header}>
-        <img src="/logo.svg" className={styles.logo} alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className={styles.link}
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className={styles.link}
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className={styles.link}
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className={styles.link}
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+
+      <main className={styles.main}>
+        <h3>what does your fav pokemon listen to?</h3>
+        <form onSubmit={onSubmit}>
+          <input
+            type="text"
+            name="pokemon"
+            placeholder="Enter an pokemon"
+            value={pokemonInput}
+            onChange={(e) => setPokemonInput(e.target.value)}
+          />
+          <input type="submit" value="Generate Music" />
+        </form>
+        <div className={styles.result}>{result}</div>
+      </main>
     </div>
-  )
+  );
 }
 
 export default IndexPage

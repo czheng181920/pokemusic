@@ -5,7 +5,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export default async function (req, res) {
+export default async function (req: any, res: any) { //fix this typing later
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
@@ -15,11 +15,11 @@ export default async function (req, res) {
     return;
   }
 
-  const animal = req.body.animal || '';
-  if (animal.trim().length === 0) {
+  const pokemon = req.body.pokemon || '';
+  if (pokemon.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: "Please enter a valid animal",
+        message: "Please enter a valid pokemon",
       }
     });
     return;
@@ -28,12 +28,12 @@ export default async function (req, res) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(animal),
+      prompt: generatePrompt(pokemon),
       max_tokens: 400,
       temperature: 1,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
-  } catch(error) {
+  } catch(error: any) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
       console.error(error.response.status, error.response.data);
@@ -49,9 +49,9 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(animal) {
-  const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
+function generatePrompt(pokemon: any) { //fix this typing later
+  const capitalizedPokemon =
+    pokemon[0].toUpperCase() + pokemon.slice(1).toLowerCase();
   return `Suggest a small genre of music that a Pokemon would listen to based on it's characteristics, personality, or what it is known for. Then explain why
   Pokemon: Bulbasaur
   Genre of Music and Why: Acoustic/Folk: The simplicity and organic qualities of acoustic and folk music might appeal to Bulbasaur. These genres often feature heartfelt lyrics and melodies that capture the essence of nature and evoke a sense of connection to the earth.
@@ -59,6 +59,6 @@ function generatePrompt(animal) {
   Genre of Music and Why: Bubblegum Pop: Piplup's association with bubbles and its cute appearance could make it inclined towards bubblegum pop music. This genre typically features light-hearted and catchy tunes that are fun and easy to sing along to.
   Pokemon: Clawitzer
   Genre of Music and Why: Sea Shanties: Clawitzer is a Water-type Pokémon, so it might find a connection to its aquatic habitat through the melodies of sea shanties. These traditional maritime songs often evoke the spirit of sailing and the ocean, which could resonate with Clawitzer's affinity for water.
-  Pokemon: ${capitalizedAnimal}
+  Pokemon: ${capitalizedPokemon}
   Genre of Music and Why:`;
 }
