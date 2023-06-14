@@ -3,6 +3,8 @@ import Head from 'next/head'
 
 import styles from "./index.module.css";
 import { useState } from 'react'
+import Authentication from './authentication';
+import Link from 'next/link';
 
 const IndexPage: NextPage = () => {
   const [pokemonInput, setPokemonInput] = useState("");
@@ -38,7 +40,9 @@ const IndexPage: NextPage = () => {
       <Head>
         <title>OpenAI Quickstart</title>
       </Head>
-
+      <Link href="/authentication">
+          Go to authenticated route
+      </Link>
       <main className={styles.main}>
         <h3>what does your fav pokemon listen to?</h3>
         <form onSubmit={onSubmit}>
