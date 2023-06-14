@@ -1,17 +1,22 @@
 import { Configuration, OpenAIApi } from "openai";
+import type { NextApiRequest, NextApiResponse } from 'next'
+
+type ResponseData = {
+  [key: string]: any; //find a way to type this better
+}
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
-export default async function (req: any, res: any) { //fix this typing later
+export default async function (req: NextApiRequest, res: NextApiResponse<ResponseData>) { 
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
         message: "OpenAI API key not configured, please follow instructions in README.md",
       }
-    });
+    }); 
     return;
   }
 
