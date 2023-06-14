@@ -1,5 +1,5 @@
 # pokemusic
-clawitzer's fav music: shea shanties 
+clawitzer's fav music: sea shanties 
 
 
 ## Setup
