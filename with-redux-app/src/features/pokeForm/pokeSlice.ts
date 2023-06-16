@@ -25,7 +25,7 @@ export const pokeSubmit = createAsyncThunk(
   async (pokemonInput: string) => {
     const response = await submitPokemon(pokemonInput)
     // The value we return becomes the `fulfilled` action payload
-    return response.data
+    return response.result
   }
 )
 
