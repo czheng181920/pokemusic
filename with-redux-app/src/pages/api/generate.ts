@@ -57,13 +57,13 @@ export default async function (req: NextApiRequest, res: NextApiResponse<Respons
 function generatePrompt(pokemon: any) { //fix this typing later
   const capitalizedPokemon =
     pokemon[0].toUpperCase() + pokemon.slice(1).toLowerCase();
-  return `Suggest a small genre of music that a Pokemon would listen to based on it's characteristics, personality, or what it is known for. Then explain why
+  return `Suggest a microgenre of music that a Pokemon would listen to based on it's characteristics, personality, or what it is known for. Then follow up with an explanation.
   Pokemon: Bulbasaur
-  Genre of Music and Why: Acoustic/Folk: The simplicity and organic qualities of acoustic and folk music might appeal to Bulbasaur. These genres often feature heartfelt lyrics and melodies that capture the essence of nature and evoke a sense of connection to the earth.
+  Answer: Acoustic/Folk: The simplicity and organic qualities of acoustic and folk music might appeal to Bulbasaur. These genres often feature heartfelt lyrics and melodies that capture the essence of nature and evoke a sense of connection to the earth.
   Pokemon: Piplup
-  Genre of Music and Why: Bubblegum Pop: Piplup's association with bubbles and its cute appearance could make it inclined towards bubblegum pop music. This genre typically features light-hearted and catchy tunes that are fun and easy to sing along to.
+  Answer: Bubblegum Pop: Piplup's association with bubbles and its cute appearance could make it inclined towards bubblegum pop music. This genre typically features light-hearted and catchy tunes that are fun and easy to sing along to.
   Pokemon: Clawitzer
-  Genre of Music and Why: Sea Shanties: Clawitzer is a Water-type Pokémon, so it might find a connection to its aquatic habitat through the melodies of sea shanties. These traditional maritime songs often evoke the spirit of sailing and the ocean, which could resonate with Clawitzer's affinity for water.
+  Answer: Sea Shanties: Clawitzer is a Water-type Pokémon, so it might find a connection to its aquatic habitat through the melodies of sea shanties. These traditional maritime songs often evoke the spirit of sailing and the ocean, which could resonate with Clawitzer's affinity for water.
   Pokemon: ${capitalizedPokemon}
-  Genre of Music and Why:`;
+  Answer:`;
 }
