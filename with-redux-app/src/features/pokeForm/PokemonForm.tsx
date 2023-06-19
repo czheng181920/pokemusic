@@ -8,6 +8,7 @@ import {
   getOpenaiOutput,
   getPokeInput,
   getStatus,
+  clearOpenAIOutput,
 } from './pokeSlice'
 
 function PokemonForm() {
@@ -15,9 +16,10 @@ function PokemonForm() {
   const pokeInput = useAppSelector(getPokeInput)
   const status =  useAppSelector(getStatus)
   const openAIResponse = useAppSelector(getOpenaiOutput)
-  
+
   async function onSubmit(event: any) {
     event.preventDefault();
+      dispatch(clearOpenAIOutput())
       dispatch(pokeSubmit(pokeInput))
   }
 
@@ -35,7 +37,8 @@ function PokemonForm() {
           />
           <input type="submit" value="Generate Music" />
         </form>
-        {status == 'loading' ? <p>Loading...</p> : <div>{openAIResponse}</div>}
+        {status == 'loading' ? <p>Loading...</p> : <p />}
+        {status == 'success' ? <div>{`genre: ${openAIResponse[0].genre}, details: ${openAIResponse[0].details}`}</div> : <p />}
       </main>
     </div>
   );
