@@ -1,0 +1,21 @@
+import type { InferGetStaticPropsType, GetStaticProps } from 'next'
+ 
+type Repo = {
+  id: number
+  name: string
+  pokemon_species: 
+}
+ 
+export const getStaticProps: GetStaticProps<{
+  repo: Repo
+}> = async () => {
+  const res = await fetch('https://pokeapi.co/api/v2/generation/1/')
+  const repo = await res.json()
+  return { props: { repo } }
+}
+ 
+export default function Page({
+  repo,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  return repo.stargazers_count
+}
