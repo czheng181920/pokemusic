@@ -84,14 +84,14 @@ export const pokeSlice = createSlice({
         state.openaiOutput = [...state.openaiOutput, action.payload]
         state.pokemonInput = ''
       })
-      .addCase(pokeSubmit.pending, (state) => {
-        state.status = 'loading'
-      })
-      .addCase(pokeSubmit.fulfilled, (state, action) => {
-        state.status = 'success'
-        state.openaiOutput = [...state.openaiOutput, action.payload]
-        state.pokemonInput = ''
-      })
+      // .addCase(generateSongs.pending, (state) => {
+      //   state.status = 'loading'
+      // })
+      // .addCase(generateSongs.fulfilled, (state, action) => {
+      //   state.status = 'success'
+      //   state.openaiOutput = [...state.openaiOutput, action.payload]
+      //   state.pokemonInput = ''
+      // })
   },
 })
 

@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 import { useState } from 'react'
 import Link from 'next/link';
 import PokemonForm from '../features/pokeForm/PokemonForm';
+import PokeGrid from '../features/pokeForm/PokeGrid';
 
 const IndexPage: NextPage = () => {
   return (
@@ -15,6 +16,7 @@ const IndexPage: NextPage = () => {
       <Link href="/authentication">
           Go to authenticated route
       </Link>
+      <PokeGrid />
       <PokemonForm />
     </div>
   );

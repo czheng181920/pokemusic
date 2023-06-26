@@ -65,3 +65,14 @@
   font-weight: bold;
   margin-top: 40px;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 10px;
+}
+
+.imgThm {
+  width: 100px;
+  height: 100px;
+}
