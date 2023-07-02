@@ -6,10 +6,9 @@ export default function PokeGrid() {
   const width = 100;
   const height = 100;
   let pokeImgList: JSX.Element[]  = [];
-  console.log('hi', pokenames.gen1)
   pokenames.gen1.forEach((pokename, pokedexNum) => {
     pokeImgList.push(
-      <div>
+      <div key={pokename}>
         <Image className={styles.imgThm} src={`/pokesprites/gen1/${pokedexNum+1}.png`} alt={pokename} width={width} height={height}/>
       </div>
     )

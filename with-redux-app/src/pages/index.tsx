@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Link from 'next/link';
 import PokemonForm from '../features/pokeForm/PokemonForm';
 import PokeGrid from '../features/pokeForm/PokeGrid';
+import { Container } from '../features/background/Container';
 
 const IndexPage: NextPage = () => {
   return (
@@ -16,6 +17,7 @@ const IndexPage: NextPage = () => {
       <Link href="/authentication">
           Go to authenticated route
       </Link>
+      <Container />
       <PokeGrid />
       <PokemonForm />
     </div>

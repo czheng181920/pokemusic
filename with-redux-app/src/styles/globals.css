@@ -14,3 +14,33 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.center {
+  display: grid;
+  place-items: center;
+}
+.wrapper-with-intrinsic-ratio {
+	position: relative;
+	height: 0;
+  padding-bottom: 100%;
+  margin: auto;
+}
+.wrapper-with-intrinsic-ratio .main-body {
+	padding-bottom: 100%;
+}
+
+.main-body {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #5B2AB3;	
+  border-radius: 10%;
+}
+
+.bottom-screen {
+  background: #242227;
+  border-radius: 10%;
+  border: 3px solid #120824;
+}
