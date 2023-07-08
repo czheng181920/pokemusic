@@ -14,11 +14,7 @@ const IndexPage: NextPage = () => {
       <Head>
         <title>OpenAI Quickstart</title>
       </Head>
-      <Link href="/authentication">
-          Go to authenticated route
-      </Link>
       <Container />
-      <PokeGrid />
       <PokemonForm />
     </div>
   );
