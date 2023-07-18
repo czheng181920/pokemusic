@@ -161,7 +161,6 @@ a {
 .gridcell {
   position: relative;
   padding-bottom: 100%;
-  overflow: "hidden";
 }
 
 .box-container {
@@ -188,9 +187,8 @@ a {
 }
 .crop {
   position: absolute;
-  width: 140%;
-  padding-bottom: 125%;
-  overflow: "hidden"
+  width: 145.2%;
+  padding-bottom: 120%;
 }
 
 .center-bottom {

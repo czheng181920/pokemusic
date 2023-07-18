@@ -12,8 +12,10 @@ export default function PokeGrid() {
             className="imgThm" 
             src={`/pokeicons/icons/${pokedexNum+1}.png`} 
             alt={pokename} 
+            // width={68}
+            // height={56}
             fill
-            sizes="(max-width: 768px) 30vw, (max-width: 1200px) 20vw"
+            sizes="30vw"
           />
         </div>
       </div>
