@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import type { AppProps } from 'next/app'
 
 import store from '../store'
-import localFont from '@next/font/local'
+import localFont from "next/font/local"
 const myFont = localFont({src: './pokemon-b-w-webfont.woff2'})
 
 export default function MyApp({ Component, pageProps }: AppProps) {
