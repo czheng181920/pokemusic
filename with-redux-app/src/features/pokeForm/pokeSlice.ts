@@ -5,6 +5,7 @@ import { generateSpotifySong, submitPokemon } from './pokeOpenAIAPI'
 
 export interface PokeFormState {
   pokemonInput: string
+  pokedexNumber: number
   status: 'idle' | 'loading' | 'failed' | 'success'
   openaiOutput: {genre: string, details: string}[]
   spotifySongs: {name: string, url: string}[]
@@ -12,6 +13,7 @@ export interface PokeFormState {
 
 const initialState: PokeFormState = {
   pokemonInput: "",
+  pokedexNumber: -1,
   status: 'idle',
   openaiOutput: [],
   spotifySongs: [],
@@ -68,6 +70,9 @@ export const pokeSlice = createSlice({
       // immutable state based off those changes
       state.pokemonInput = action.payload
     },
+    setCurrentPokedexNumber: (state, action) => {
+      state.pokedexNumber = action.payload
+    },
     clearOpenAIOutput: (state) => {
       state.openaiOutput = [];
     }
@@ -95,12 +100,13 @@ export const pokeSlice = createSlice({
   },
 })
 
-export const { setInput, clearOpenAIOutput } = pokeSlice.actions
+export const { setInput, clearOpenAIOutput, setCurrentPokedexNumber} = pokeSlice.actions
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const getPokeInput = (state: AppState) => state.pokeForm.pokemonInput
+export const getPokedexNumber = (state: AppState) => state.pokeForm.pokedexNumber
 export const getOpenaiOutput = (state: AppState) => state.pokeForm.openaiOutput
 export const getStatus = (state: AppState) => state.pokeForm.status
 

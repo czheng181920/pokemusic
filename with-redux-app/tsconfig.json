@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/features/pokeForm/PokeGrid.tsx", "src/features/pokeForm/PokeGrid.tsx"  ],
+, "src/features/pokeForm/PokeGrid-Gen8.tsx", "src/features/pokeForm/PokeGrid-Gen8.tsx"  ],
   "exclude": [
     "node_modules"
   ]

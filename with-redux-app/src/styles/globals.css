@@ -4,8 +4,9 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  color: white;
+  color: black;
   background-color: #050209;
+  font-size: x-large;
 }
 
 a {
@@ -149,7 +150,6 @@ a {
 .bottom {
   position: absolute;
   bottom: 0;
-  margin-bottom: 2%;
 }
 
 .pokegrid {
@@ -162,7 +162,9 @@ a {
   position: relative;
   padding-bottom: 100%;
 }
-
+.gridcell7 {
+  position: relative;
+}
 .box-container {
   width: 97%;
   /* padding-bottom: 97%; */
@@ -178,7 +180,7 @@ a {
   overflow-y:scroll;
   overflow-x:hidden;
   mask-image: linear-gradient(to top, black 97%, transparent 100%);
-  padding-top: 3%;
+  padding-top: 4%;
 }
 
 .imgThm {
@@ -191,12 +193,17 @@ a {
   padding-bottom: 120%;
 }
 
+.crop7 {
+  padding-bottom: 75%;
+}
+
 .center-bottom {
   width: 100%;
   display: grid;
   justify-items: center;
   align-items: end;
 }
+
 .box-wallpaper-container{
   width: 100%;
   position: absolute;
@@ -229,4 +236,36 @@ a {
 .box-content{
   margin-right: 5%;
   margin-left: 2%;
+}
+.textbox {
+  background: #dbd5e5;
+  border-radius: 32px;
+  border-style: solid;
+  border-color: #35303c;
+  border-width: 5px;
+  width: 100%;
+  min-height: 70px;
+  position: relative;
+  box-shadow: 
+    inset 0px 0px 0px 2px rgba(219, 213, 229, 1),
+    inset 0px 0px 10px 15px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+}
+
+.profoak-container{
+  position: absolute;
+  width: 17.25%;
+  padding-bottom: 37.5%;
+  margin-top: 1%;
+}
+.profOak{
+  object-fit: "contain";
+}
+
+.select-arrow-container{
+  position: absolute;
+  padding-bottom: 74%;
+  width: 50%;
+  top: -35%;
+  left: 52%;
 }

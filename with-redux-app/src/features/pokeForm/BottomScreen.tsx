@@ -1,4 +1,4 @@
-import PokeGrid from "./PokeGrid";
+import PokeGrid from "./PokeGrid-Gen7";
 import Image from 'next/image';
 
 export default function BottomScreen() {
