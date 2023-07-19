@@ -13,29 +13,15 @@ import {
 import { useEffect, useState } from 'react';
 import { welcomeText } from './texts.js';
 import TypeWriterText from './TypeWriterText';
+import Screen1 from './Screen1';
+import Screen2 from './Screen2';
 
 export default function TopScreen() {
   const pokedexnumber = useAppSelector(getPokedexNumber)
   return (
     <div className="wrapper-with-intrinsic-ratio topscreen-wrapper center">
       <div className="topscreen screen ">
-        <div className="pure-u-g">
-          <div className="pure-u-1 centerY">
-            <div className="profoak-container">
-              {/* {pokedexnumber} */}
-              <Image 
-                className="profOak" 
-                src={`/backgrounds/prof-oak.png`} 
-                alt="professor-oak"
-                fill
-                sizes="20vw"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="pure-u-1 bottom">
-          <TypeWriterText text={welcomeText}/>
-        </div>
+        {pokedexnumber == -1 ? <Screen1 /> : <Screen2 />}
       </div>
     </div>
     )
