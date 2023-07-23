@@ -6,7 +6,9 @@ export default function PowerButton() {
         className="powerbutton"
         src={`/3ds/power.png`} 
         alt={"power-button"} 
-        fill={true}/>
+        fill={true}
+        sizes="20vw"
+        />
     </div>
     )
 }

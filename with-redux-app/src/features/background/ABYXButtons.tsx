@@ -6,7 +6,8 @@ export default function ABYXButtons() {
         className="directionbutton"
         src={`/3ds/ABYXbuttons.png`} 
         alt={"ABYXbuttons-button"} 
-        fill={true}/>
+        fill={true}
+        sizes="50vw"/>
     </div>
     )
 }

@@ -15,19 +15,13 @@ import {
 import { useState } from 'react';
 import SelectArrow2 from '../background/SelectArrow2';
 
-export default function Screen2() {
+export default function Screen3() {
   const dispatch = useAppDispatch()
 
   const pokedexnumber = useAppSelector(getPokedexNumber)
   const pokename = useAppSelector(getPokeInput)
   const[hoverYes,setHoverYes] = useState(false);
   const[hoverNo,setHoverNo] = useState(false);
-  const pokeInput = useAppSelector(getPokeInput)
-  const status =  useAppSelector(getStatus)
-
-  function submitPoke(){
-    dispatch(pokeSubmit(pokeInput))
-  }
 
   return (
     <div className="welcome-screen">
@@ -37,7 +31,7 @@ export default function Screen2() {
             <Image 
               className="master-ball" 
               src={`/backgrounds/master-ball.png`} 
-              alt='master ball'
+              alt={pokename}
               fill
               sizes="50vw"
             />
@@ -65,7 +59,6 @@ export default function Screen2() {
             <div className="textbox select">
               <div 
                 className="yes"
-                onClick={(e) => submitPoke()}
                 onMouseOver={(e) => setHoverYes(true)}
                 onMouseOut={(e) => setHoverYes(false)}
               >
@@ -84,13 +77,7 @@ export default function Screen2() {
             </div>
           </div>
         </div>
-          <div className="wrapper">
-            <div className="top-textbox-container">
-              <div className="absolute">
-                <TypeWriterText text={selectText}/>
-              </div>
-            </div>
-          </div>
+        <TypeWriterText text={selectText}/>
       </div>
     </div>
     )

@@ -1,76 +1,28 @@
-import PokeGrid from "./PokeGrid-Gen7";
-import Image from 'next/image';
+import BScreen1 from "./BScreen1";
+import { useAppSelector, useAppDispatch } from '../../hooks'
+import {
+  getStatus,
+} from './pokeSlice'
+import BScreen2 from "./BScreen2";
 
 export default function BottomScreen() {
+  const dispatch = useAppDispatch()
+
+  const status =  useAppSelector(getStatus)
+  function renderScreen() {
+    switch(status){
+      case 'loading':
+        return (<p>Loading...</p>);
+      case 'success':
+        return (<BScreen2 />);
+      default:
+        return (<BScreen1 />);
+    }
+  }
   return (
     <div className="wrapper-with-intrinsic-ratio bottomscreen-wrapper center">
       <div className="bottomscreen screen">
-        <div className="pure-g">
-          <div className="pure-u-3-4">
-            <div className="box-container">
-              <div className="box-wallpaper-container">
-                <Image 
-                  className="box-wallpaper" 
-                  src={`/backgrounds/box-wallpaper.png`} 
-                  alt={"box-wallpaper"} 
-                  fill
-                  sizes="42vw"
-                />
-              </div>
-              <div className="box-content">
-                <div className="pure-g">
-                  <div className="pure-u-1-12">
-                    <div className="box-arrow-container">
-                      <Image 
-                        className="box-header" 
-                        src={`/backgrounds/box-left.png`} 
-                        alt={"box-header"} 
-                        fill
-                        sizes="42vw"
-                      />
-                    </div>
-                  </div>
-                  <div className="pure-u-5-6">
-                    <div className="box-header-container">
-                      <Image 
-                        className="box-header" 
-                        src={`/backgrounds/box-header.png`} 
-                        alt={"box-header"} 
-                        fill
-                        sizes="42vw"
-                      />
-                    </div>
-                  </div>
-                  <div className="pure-u-1-12">
-                    <div className="box-arrow-container">
-                      <Image 
-                        className="box-header" 
-                        src={`/backgrounds/box-right.png`} 
-                        alt={"box-header"} 
-                        fill
-                        sizes="42vw"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="pure-g">
-                  <div className="pure-u-1">
-                    <div className="pokegrid-ratio-container">
-                      <div className="pokegrid-container">
-                        <PokeGrid />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              
-            </div>
-          </div>
-          <div className="pure-u-3-4">
-            {/* TODO: add the search function here */}
-          </div>
-        </div>
+        {renderScreen()}
       </div>
     </div>
     )

@@ -8,7 +8,6 @@ import {
   setInput,
   setCurrentPokedexNumber,
   pokeSubmit,
-  getOpenaiOutput,
   getPokeInput,
   getPokedexNumber,
   getStatus,

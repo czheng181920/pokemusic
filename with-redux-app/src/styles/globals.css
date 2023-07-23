@@ -6,7 +6,19 @@ body {
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   color: black;
   background-color: #050209;
-  font-size: x-large;
+  font-size:large;
+  /* font-size: 16px;
+  font-size: clamp(16px, 3vw, 30px); */
+}
+@media screen and (min-width: 870px) {
+  body {
+    font-size: calc(16px + 1vw);
+  }
+}
+@media screen and (min-width: 1920px) {
+  body {
+    font-size: 2rem;
+  }
 }
 
 a {
@@ -36,12 +48,25 @@ a {
 .left {
   float:left;
 }
+.rightflex {
+  display: flex;
+  justify-content: flex-end;
+}
 .wrapper-with-intrinsic-ratio {
 	position: relative;
   /* padding-bottom makes the child relative to this parent container's width */
   padding-bottom: 100%;
 }
-
+.maintain-aspect-ratio-but-fill-screen-width-and-height{
+  width: 80vw; 
+  height: 80vw; 
+  max-height: 80vh;
+  max-width: 80vh; 
+  margin: auto;
+  position: absolute;
+  top:0;bottom:0; /* vertical center */
+  left:0;right:0; /* horizontal center */
+}
 .main-body {
 	position: absolute;
 	top: 0;
@@ -167,7 +192,6 @@ a {
 }
 .box-container {
   width: 97%;
-  /* padding-bottom: 97%; */
   position: relative;
   height:auto;
 }
@@ -194,6 +218,8 @@ a {
 }
 
 .crop7 {
+  position: relative;
+  width: 100%;
   padding-bottom: 75%;
 }
 
@@ -237,6 +263,16 @@ a {
   margin-right: 5%;
   margin-left: 2%;
 }
+.top-textbox-container{
+  width: 100%;
+  padding-top: 19%; 
+  position: relative; /* If you want text inside of it */
+}
+.bottom-textbox-container{
+  width: 100%;
+  padding-top: 54%; 
+  position: relative; /* If you want text inside of it */
+}
 .textbox {
   background: #dbd5e5;
   border-radius: 32px;
@@ -244,14 +280,25 @@ a {
   border-color: #35303c;
   border-width: 5px;
   width: 100%;
-  min-height: 5rem;
+  height: 100%;
   position: relative;
   box-shadow: 
     inset 0px 0px 0px 2px rgba(219, 213, 229, 1),
-    inset 0px 0px 10px 15px rgba(0, 0, 0, 0.25);
+    inset 0px 0px 10px 10px rgba(0, 0, 0, 0.25);
   padding: 20px;
+  overflow-y: scroll;
 }
-
+.wrapper {
+  position: relative;
+}
+.select{
+  padding: 16px 15px 10px 15px;
+  border-radius: 25px;
+  cursor: default;
+}
+.textbox.select {
+  overflow-y: visible;
+}
 .profoak-container{
   position: absolute;
   width: 23%;
@@ -268,4 +315,63 @@ a {
   width: 50%;
   top: -35%;
   left: 52%;
+}
+
+.selected-pokemon-container{
+  position: absolute;
+  width:30%;
+  padding-bottom:30%;
+}
+
+.selected-pokemon-name-container {
+  background: #6D637A;
+  background: linear-gradient(to right, #4E3A6A 50%, transparent 100%);
+  width: 75%;
+  padding-top: 1%;
+  color: white;
+  position: relative;
+}
+
+.master-ball{
+  object-fit: contain;
+  object-position: left;
+}
+
+.pokename {
+  margin-left: 13%;
+  font-size: larger;
+}
+.select-arrow-container2{
+  position: absolute;
+  padding-bottom: 110%;
+  width: 110%;
+  left: -130%;
+  top: -10%;
+}
+
+.no, .yes{
+  position: relative;
+}
+
+.footer-container{
+  width:100%;
+  padding-bottom: 8%;
+  position: relative;
+  background: #dbd5e5;
+  border-style: solid;
+  border-color: #35303c;
+  border-width: 2px;
+  position: relative;
+  box-shadow: inset 0px -12px 10px 0px rgba(0, 0, 0, 0.25);
+}
+.footer-buttons{
+  box-shadow: inset 0px -4px 5px 4px rgba(18, 8, 36, 0.6),
+    0px 4px 4px 0px rgba(53, 48, 60, 0.35);
+}
+.footer-button-container{
+  width: 7%;
+  padding-bottom: 7%;
+  padding-top: 1%;
+  position: relative; 
+  margin-right: 2%;
 }

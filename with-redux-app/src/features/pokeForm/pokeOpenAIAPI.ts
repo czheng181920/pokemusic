@@ -14,19 +14,21 @@ export async function submitPokemon(pokemonInput:string): Promise<{ [key: string
     }
     return data
   } catch(error: any) {
-    console.error('Failed PokeForm submit: ', error);
-    alert(error.message);
-    return error;
+    console.error('Failed while fetching OpenAI response: ', error);
+    throw error;
   }
 }
 
 export async function generateSpotifySong(genreInput:string): Promise<{ [key: string]: any }> {
   try {
     var params = {
-      genre: genreInput,
+      q: genreInput,
       type : `track`,
       limit: 2,
     }
+    // q: `sea%20shanties`,
+    // type : `track`,
+    // limit: 2
     const response = await fetch("/api/spotifyAPI", {
       method: "POST",
       headers: {
@@ -39,10 +41,9 @@ export async function generateSpotifySong(genreInput:string): Promise<{ [key: st
     if (response.status !== 200) {
       throw data.error || new Error(`Request failed with status ${response.status}`);
     }
-    return data
+    return data;
   } catch(error: any) {
-    console.error('Failed PokeForm submit: ', error);
-    alert(error.message);
-    return error;
+    console.error('Failed while fetching Spotify tracklist: ', error);
+    throw error;
   }
 }

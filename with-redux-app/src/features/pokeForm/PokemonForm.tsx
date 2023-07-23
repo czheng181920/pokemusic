@@ -5,7 +5,8 @@ import { useAppSelector, useAppDispatch } from '../../hooks'
 import {
   setInput,
   pokeSubmit,
-  getOpenaiOutput,
+  getGenre,
+  getDetails,
   getPokeInput,
   getStatus,
   clearOpenAIOutput,
@@ -15,7 +16,8 @@ function PokemonForm() {
   const dispatch = useAppDispatch()
   const pokeInput = useAppSelector(getPokeInput)
   const status =  useAppSelector(getStatus)
-  const openAIResponse = useAppSelector(getOpenaiOutput)
+  const genre = useAppSelector(getGenre)
+  const details = useAppSelector(getDetails)
 
   async function onSubmit(event: any) {
     event.preventDefault();
@@ -38,7 +40,7 @@ function PokemonForm() {
           <input type="submit" value="Generate Music" />
         </form>
         {status == 'loading' ? <p>Loading...</p> : <p />}
-        {status == 'success' ? <div>{`genre: ${openAIResponse[0].genre}, details: ${openAIResponse[0].details}`}</div> : <p />}
+        {status == 'success' ? <div>{`genre: ${genre}, details: ${details}`}</div> : <p />}
       </main>
     </div>
   );

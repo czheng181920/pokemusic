@@ -1,5 +1,5 @@
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
- 
+
 type Repo = {
   access_token: string,
   token_type: string,
@@ -19,7 +19,9 @@ export default async function getSpotifySongs(req: any, res: any) {
 
   const obj = req.body.genre;  //supposed to look like testJSON
   const params = new URLSearchParams(obj).toString();
-  console.log(params);
+
+  const console = require('console');
+  console.debug("DEBUGGING", params);
 
   try{
     //get access token

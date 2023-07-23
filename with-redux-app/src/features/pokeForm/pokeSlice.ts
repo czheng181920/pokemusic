@@ -1,13 +1,27 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, isRejectedWithValue, PayloadAction } from '@reduxjs/toolkit'
 import type { AppState, AppThunk } from '../../store'
 
 import { generateSpotifySong, submitPokemon } from './pokeOpenAIAPI'
+
+
+interface Track {
+  title: string
+  artist: string
+  playLink: string
+  albumArt: string
+}
+
+interface SubmitOutput {
+  genre: string, 
+  details: string, 
+  tracks: any
+}
 
 export interface PokeFormState {
   pokemonInput: string
   pokedexNumber: number
   status: 'idle' | 'loading' | 'failed' | 'success'
-  openaiOutput: {genre: string, details: string}[]
+  submitOutput: SubmitOutput
   spotifySongs: {name: string, url: string}[]
 }
 
@@ -15,7 +29,11 @@ const initialState: PokeFormState = {
   pokemonInput: "",
   pokedexNumber: -1,
   status: 'idle',
-  openaiOutput: [],
+  submitOutput: {
+    genre: "",
+    details: "",
+    tracks: []
+  },
   spotifySongs: [],
 }
 
@@ -28,27 +46,41 @@ export const pokeSubmit = createAsyncThunk(
   'pokeForm/submitPokemon',
   async (pokemonInput: string) => {
     try {
-      const response = await submitPokemon(pokemonInput)
-      // The value we return becomes the `fulfilled` action payload
-      var data = response.result.split(":");
+      let data: string[];
+      let tracklist: any[] = []; //change this typing to tracks
+
+      const response = await submitPokemon(pokemonInput);
+      data = response.result.split(":");
       if (data.length != 2){
         throw new Error(`Request response invalid. Expecting a response with only one colon. Please try again.`);
       }
-      return {genre: data[0], details: data[1]}
+      const genreInput = data[0];
+      console.log('uhsdhfasdf', genreInput)
+      // const responseSongs = await generateSpotifySong(genreInput);
+      
+      // if(responseSongs && responseSongs.tracks && responseSongs.tracks.items) { //change this so that we check every track's property types
+      //   tracklist = responseSongs.tracks.items;
+      // }
+      return {
+        genre: data[0], 
+        details: data[1],
+        tracks: tracklist
+      }
     }catch (error: any) {
-      console.error(error);
-      alert(error.message);
-      return error;
+      return isRejectedWithValue(error)
     }
   }
 )
-
+//TODO:  put the bottom function inside the top function yes 
 export const generateSongs = createAsyncThunk(
   'pokeForm/generateSpotifySong',
   async(genreInput:string) => {
     try {
       const response = await generateSpotifySong(genreInput);
-      return {name: response.tracks.items[0].name, url: response.tracks.items[0].external_urls.spotify}
+      return {
+        name: response.tracks.items[0].name,
+        url: response.tracks.items[0].external_urls.spotify
+      }
     } catch (error: any) {
       console.error(error);
       alert(error.message);
@@ -71,10 +103,19 @@ export const pokeSlice = createSlice({
       state.pokemonInput = action.payload
     },
     setCurrentPokedexNumber: (state, action) => {
-      state.pokedexNumber = action.payload
+      state.pokedexNumber = action.payload;
     },
     clearOpenAIOutput: (state) => {
-      state.openaiOutput = [];
+      state.submitOutput = {
+        genre: "",
+        details: "",
+        tracks: []
+      } as SubmitOutput;
+      state.status = 'idle';
+    },
+    clearPokeInput: (state) => {
+      state.pokemonInput = "";
+      state.pokedexNumber = -1;
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -86,28 +127,24 @@ export const pokeSlice = createSlice({
       })
       .addCase(pokeSubmit.fulfilled, (state, action) => {
         state.status = 'success'
-        state.openaiOutput = [...state.openaiOutput, action.payload]
-        state.pokemonInput = ''
+        state.submitOutput = action.payload as SubmitOutput;
       })
-      // .addCase(generateSongs.pending, (state) => {
-      //   state.status = 'loading'
-      // })
-      // .addCase(generateSongs.fulfilled, (state, action) => {
-      //   state.status = 'success'
-      //   state.openaiOutput = [...state.openaiOutput, action.payload]
-      //   state.pokemonInput = ''
-      // })
+      .addCase(pokeSubmit.rejected, (state, action) => {
+        state.status = 'failed'
+        alert(action.payload);
+      } )
   },
 })
 
-export const { setInput, clearOpenAIOutput, setCurrentPokedexNumber} = pokeSlice.actions
+export const { setInput, clearOpenAIOutput, setCurrentPokedexNumber, clearPokeInput} = pokeSlice.actions
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const getPokeInput = (state: AppState) => state.pokeForm.pokemonInput
 export const getPokedexNumber = (state: AppState) => state.pokeForm.pokedexNumber
-export const getOpenaiOutput = (state: AppState) => state.pokeForm.openaiOutput
+export const getGenre = (state: AppState) => state.pokeForm.submitOutput.genre
+export const getDetails = (state: AppState) => state.pokeForm.submitOutput.details
 export const getStatus = (state: AppState) => state.pokeForm.status
 
 

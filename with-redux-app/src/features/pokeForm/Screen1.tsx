@@ -19,7 +19,11 @@ export default function Screen1() {
         </div>
       </div>
       <div className="pure-u-1 bottom">
-        <TypeWriterText text={welcomeText}/>
+        <div className="top-textbox-container">
+          <div className="absolute">
+            <TypeWriterText text={welcomeText}/>
+          </div>
+        </div>
       </div>
     </div>
     )

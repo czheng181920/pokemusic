@@ -4,7 +4,6 @@ import {
   setInput,
   setCurrentPokedexNumber,
   pokeSubmit,
-  getOpenaiOutput,
   getPokeInput,
   getPokedexNumber,
   getStatus,
@@ -15,13 +14,25 @@ import { welcomeText } from './texts.js';
 import TypeWriterText from './TypeWriterText';
 import Screen1 from './Screen1';
 import Screen2 from './Screen2';
+import Screen3 from './Screen3';
 
 export default function TopScreen() {
   const pokedexnumber = useAppSelector(getPokedexNumber)
+  const status = useAppSelector(getStatus)
+  function renderScreen() {
+    switch(status){
+      case 'loading':
+        return (<p>Loading...</p>);
+      case 'success':
+        return (<Screen3 />);
+      default:
+        return (pokedexnumber == -1 ? <Screen1 /> : <Screen2 />);
+    }
+  }
   return (
     <div className="wrapper-with-intrinsic-ratio topscreen-wrapper center">
       <div className="topscreen screen ">
-        {pokedexnumber == -1 ? <Screen1 /> : <Screen2 />}
+        {renderScreen()}
       </div>
     </div>
     )

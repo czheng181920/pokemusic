@@ -6,7 +6,9 @@ export default function DirectionButton() {
         className="directionbutton"
         src={`/3ds/directionbutton.png`} 
         alt={"direction-button"} 
-        fill={true}/>
+        fill={true}
+        sizes="50vw"
+        />
     </div>
     )
 }
