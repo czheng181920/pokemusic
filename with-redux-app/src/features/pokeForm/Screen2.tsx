@@ -30,8 +30,8 @@ export default function Screen2() {
   }
 
   return (
-    <div className="welcome-screen">
-      <div className="pure-u-g">
+    <div className="">
+      <div className="pure-g">
         <div className="pure-u-1">
           <div className="selected-pokemon-name-container">
             <Image 

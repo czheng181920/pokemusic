@@ -318,9 +318,9 @@ a {
 }
 
 .selected-pokemon-container{
-  position: absolute;
-  width:30%;
-  padding-bottom:30%;
+  position: relative;
+  width:35%;
+  padding-bottom:35%;
 }
 
 .selected-pokemon-name-container {
@@ -374,4 +374,162 @@ a {
   padding-top: 1%;
   position: relative; 
   margin-right: 2%;
+}
+
+.track-box-container{
+  /* TODO: change all the containers to use aspect-ratio instead of padding-bottom ugh i wish i had found out about this sooner */
+  aspect-ratio: 30/11; 
+  background: #dbd5e5;
+  border-radius: 200px;
+  border-style: solid;
+  border-color: #5b2ab3;
+  border-width: 5px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  box-shadow: 
+    inset 0px 0px 0px 2px rgba(219, 213, 229, 1),
+    inset 0px 0px 10px 10px rgba(0, 0, 0, 0.25);
+  overflow-y: hidden;
+}
+
+.spacer {
+  gap: 5px;
+}
+.spacer-r{
+  padding-top: 5%;
+}
+.artist{
+  background: #5b2ab3;
+  width: 100%;
+  font-size: smaller;
+}
+.artist-text-container{
+  text-align: right;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  font-size: smaller;
+  color: #dbd5e5;
+  padding-left: 20%;
+  padding-right: 16%
+}
+
+.albumart{
+  aspect-ratio: 1/1;
+
+  width: 10%;
+  position: absolute;
+  border-radius: 100%;
+  border: 2px solid black;
+  box-shadow: 0px 0px 1px 1px rgba(219, 213, 229, 1);
+  z-index: 20;
+}
+
+.track-title{
+  aspect-ratio: 10/1;
+  width: 100%;
+  padding-left: 20%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.audio-player-container{
+  width: 70%;
+  aspect-ratio: 13/1;
+  margin-top: 1%;
+  margin-left: 13%;
+  padding-left: 1%;
+  border-radius: 5px;
+  background: #120824;
+  padding-top: 0.5%;
+  display: flex;
+}
+.play-pause{
+  width: 10%;
+  height: 90%;
+  vertical-align: top;
+  font-size: medium;
+  padding-left: 1.5%;
+  padding-right: 1%;
+}
+.slider-container {
+  width: 85%;
+  padding-top: 1%;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #6EBC5B;
+  cursor: pointer;
+  width: 95%;
+  vertical-align: top;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 95%;
+  height: 80%;
+  border-radius: 4px;
+}
+                /***** Track Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  input[type='range'] {
+    overflow: hidden;
+    width: 100%;
+    -webkit-appearance: none;
+    background-color: #6D637A;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 100%;
+    -webkit-appearance: none;
+    color: #6D637A;
+    margin-top: -1px;
+  }
+
+  /***** Thumb Styles *****/
+  input[type='range']::-webkit-slider-thumb {
+    height: 0.7rem;
+    width: 1rem;    
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: ew-resize;
+    background: #6EBC5B;
+    box-shadow: -80px 0 0 80px #6EBC5B;
+  }
+
+}
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #6EBC5B; 
+  height: 0.8rem;
+
+}
+input[type="range"]::-moz-range-track {  
+  background-color: #6D637A;
+  height: 0.8rem;
+}
+input[type="range"]::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  background-color: #6EBC5B;
+  height: 0.8rem;
+  width: 1rem;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #6EBC5B; 
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: #6D637A;
+}
+
+.progress {
+  padding-left: 15%;
+  font-size: smaller;
 }

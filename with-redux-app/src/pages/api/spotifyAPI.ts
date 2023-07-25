@@ -7,21 +7,13 @@ type Repo = {
 }
 
 export default async function getSpotifySongs(req: any, res: any) { 
+  const console = require('console');
+
   var client_id = process.env.SPOTIFY_CLIENT_ID;
   var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
  
-  var testJSON = {
-    q: `sea%20shanties`,
-    type : `track`,
-    limit: 2
-  }
-  var testURL = 'q=sea%2520shanties&type=track&limit=2'
-
-  const obj = req.body.genre;  //supposed to look like testJSON
+  const obj = req.body;  //supposed to look like testJSON
   const params = new URLSearchParams(obj).toString();
-
-  const console = require('console');
-  console.debug("DEBUGGING", params);
 
   try{
     //get access token

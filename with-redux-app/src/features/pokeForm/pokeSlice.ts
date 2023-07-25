@@ -7,14 +7,15 @@ import { generateSpotifySong, submitPokemon } from './pokeOpenAIAPI'
 interface Track {
   title: string
   artist: string
-  playLink: string
+  url: string
+  play: string
   albumArt: string
 }
 
 interface SubmitOutput {
   genre: string, 
   details: string, 
-  tracks: any
+  tracks: Track[]
 }
 
 export interface PokeFormState {
@@ -44,10 +45,10 @@ const initialState: PokeFormState = {
 // typically used to make async requests.
 export const pokeSubmit = createAsyncThunk(
   'pokeForm/submitPokemon',
-  async (pokemonInput: string) => {
+  async (pokemonInput: string, { rejectWithValue }) => {
     try {
       let data: string[];
-      let tracklist: any[] = []; //change this typing to tracks
+      let tracklist: Track[] = []; //change this typing to tracks
 
       const response = await submitPokemon(pokemonInput);
       data = response.result.split(":");
@@ -56,18 +57,37 @@ export const pokeSubmit = createAsyncThunk(
       }
       const genreInput = data[0];
       console.log('uhsdhfasdf', genreInput)
-      // const responseSongs = await generateSpotifySong(genreInput);
-      
-      // if(responseSongs && responseSongs.tracks && responseSongs.tracks.items) { //change this so that we check every track's property types
-      //   tracklist = responseSongs.tracks.items;
-      // }
+      const tracksdata = await generateSpotifySong(genreInput);
+      //checking trackdata
+      console.log(tracksdata, 'asdfasdfa')
+      if(tracksdata.result.tracks && tracksdata.result.tracks.items) {
+        console.log(tracksdata.result.items)
+        for (var track of tracksdata.result.tracks.items){
+          let curr: Track;
+          var artistlist = [];
+          if(track.artists && track.artists.length > 0 ){
+            for (var artist of track.artists){
+              artistlist.push(artist.name)
+            }
+          }
+          
+          curr = {
+            title: track.name ? track.name : "",
+            artist: artistlist.join(', '),
+            url: track.external_urls.spotify ?  track.external_urls.spotify : "",
+            play: track.preview_url ? track.preview_url : "",
+            albumArt: track.album.images[0].url,
+          }
+          tracklist.push(curr)
+        }
+      }
       return {
         genre: data[0], 
         details: data[1],
         tracks: tracklist
       }
     }catch (error: any) {
-      return isRejectedWithValue(error)
+      return rejectWithValue(error)
     }
   }
 )
@@ -131,6 +151,7 @@ export const pokeSlice = createSlice({
       })
       .addCase(pokeSubmit.rejected, (state, action) => {
         state.status = 'failed'
+        console.log('its failing async thunk')
         alert(action.payload);
       } )
   },
@@ -145,6 +166,7 @@ export const getPokeInput = (state: AppState) => state.pokeForm.pokemonInput
 export const getPokedexNumber = (state: AppState) => state.pokeForm.pokedexNumber
 export const getGenre = (state: AppState) => state.pokeForm.submitOutput.genre
 export const getDetails = (state: AppState) => state.pokeForm.submitOutput.details
+export const getTracks = (state: AppState) => state.pokeForm.submitOutput.tracks
 export const getStatus = (state: AppState) => state.pokeForm.status
 
 

@@ -4,8 +4,8 @@ import TypeWriterText from './TypeWriterText';
 
 export default function Screen1() {
   return (
-    <div className="welcome-screen">
-      <div className="pure-u-g">
+    <div className="">
+      <div className="pure-g">
         <div className="pure-u-1 centerY">
           <div className="profoak-container">
             <Image 
