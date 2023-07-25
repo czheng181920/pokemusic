@@ -14,7 +14,7 @@ import {
 } from './pokeSlice'
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-export default function TrackBox(props: { tracknum: number }) {
+export default function TrackBox(props: { tracknum : number }) {
   var tracks = useAppSelector(getTracks)
   var track = tracks[props.tracknum] 
 
@@ -61,7 +61,7 @@ export default function TrackBox(props: { tracknum: number }) {
     setDuration(seconds);
     progressBarRef.current.max = seconds;
   };
-  const formatTime = (time) => {
+  const formatTime = (time : number) => {
     if (time && !isNaN(time)) {
       const minutes = Math.floor(time / 60);
       const formatMinutes =

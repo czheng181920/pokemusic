@@ -23,8 +23,6 @@ export async function generateSpotifySong(genreInput:string): Promise<{ [key: st
   try {
     var params = {
       q: genreInput,
-      type : `track`,
-      limit: `6`,
     }
     const response = await fetch("/api/spotifyAPI", {
       method: "POST",

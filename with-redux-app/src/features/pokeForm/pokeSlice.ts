@@ -60,9 +60,8 @@ export const pokeSubmit = createAsyncThunk(
       const tracksdata = await generateSpotifySong(genreInput);
       //checking trackdata
       console.log(tracksdata, 'asdfasdfa')
-      if(tracksdata.result.tracks && tracksdata.result.tracks.items) {
-        console.log(tracksdata.result.items)
-        for (var track of tracksdata.result.tracks.items){
+      if(tracksdata.result) {
+        for (var track of tracksdata.result){
           let curr: Track;
           var artistlist = [];
           if(track.artists && track.artists.length > 0 ){

@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/features/pokeForm/PokeGrid-Gen8.tsx", "src/features/pokeForm/PokeGrid-Gen8.tsx", "src/features/pokeForm/BScreen1.tsx", "src/features/pokeForm/AudioPlayer.jsx"  ],
+, "src/features/pokeForm/PokeGrid-Gen8.tsx", "src/features/pokeForm/PokeGrid-Gen8.tsx", "src/features/pokeForm/BScreen1.tsx", "src/features/pokeForm/AudioPlayer.jsx", "src/features/pokeForm/TrackBox.tsx"  ],
   "exclude": [
     "node_modules"
   ]
