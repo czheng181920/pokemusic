@@ -24,6 +24,7 @@ export interface PokeFormState {
   status: 'idle' | 'loading' | 'failed' | 'success'
   submitOutput: SubmitOutput
   spotifySongs: {name: string, url: string}[]
+  generation: number
 }
 
 const initialState: PokeFormState = {
@@ -36,6 +37,7 @@ const initialState: PokeFormState = {
     tracks: []
   },
   spotifySongs: [],
+  generation: 1,
 }
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -135,6 +137,20 @@ export const pokeSlice = createSlice({
     clearPokeInput: (state) => {
       state.pokemonInput = "";
       state.pokedexNumber = -1;
+    },
+    increaseGenNum: (state) => {
+      if (state.generation >= 7 ){
+        state.generation = 1;
+      } else {
+        state.generation++
+      }
+    },
+    decreaseGenNum: (state) => {
+      if (state.generation <= 1 ){
+        state.generation = 7;
+      } else {
+        state.generation--;
+      }
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -156,7 +172,7 @@ export const pokeSlice = createSlice({
   },
 })
 
-export const { setInput, clearOpenAIOutput, setCurrentPokedexNumber, clearPokeInput} = pokeSlice.actions
+export const { setInput, clearOpenAIOutput, setCurrentPokedexNumber, clearPokeInput, increaseGenNum, decreaseGenNum} = pokeSlice.actions
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
@@ -167,6 +183,7 @@ export const getGenre = (state: AppState) => state.pokeForm.submitOutput.genre
 export const getDetails = (state: AppState) => state.pokeForm.submitOutput.details
 export const getTracks = (state: AppState) => state.pokeForm.submitOutput.tracks
 export const getStatus = (state: AppState) => state.pokeForm.status
+export const getGen = (state: AppState) => state.pokeForm.generation
 
 
 

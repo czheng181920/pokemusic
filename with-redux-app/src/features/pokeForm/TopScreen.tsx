@@ -15,6 +15,7 @@ import TypeWriterText from './TypeWriterText';
 import Screen1 from './Screen1';
 import Screen2 from './Screen2';
 import Screen3 from './Screen3';
+import LoadingScreen from './LoadingScreen';
 
 export default function TopScreen() {
   const pokedexnumber = useAppSelector(getPokedexNumber)
@@ -22,7 +23,7 @@ export default function TopScreen() {
   function renderScreen() {
     switch(status){
       case 'loading':
-        return (<p>Loading...</p>);
+        return (<LoadingScreen />);
       case 'success':
         return (<Screen3 />);
       default:

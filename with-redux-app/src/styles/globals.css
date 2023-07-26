@@ -533,3 +533,18 @@ input[type="range"]::-ms-fill-upper {
   padding-left: 15%;
   font-size: smaller;
 }
+.loading-container{
+  aspect-ratio: 5/2;
+  position: relative;
+}
+.loading-background{
+  background-color: #232850;
+  height: 100%;
+}
+
+.gen-text{
+  position: absolute;
+  padding-left: 40%;
+  padding-top: 7.5%;
+  color: white;
+}

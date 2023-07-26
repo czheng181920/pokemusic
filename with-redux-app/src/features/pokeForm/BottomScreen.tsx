@@ -4,6 +4,8 @@ import {
   getStatus,
 } from './pokeSlice'
 import BScreen2 from "./BScreen2";
+import LoadingScreen from "./LoadingScreen";
+import BLoadingScreen from "./BLoadingScreen";
 
 export default function BottomScreen() {
   const dispatch = useAppDispatch()
@@ -12,7 +14,7 @@ export default function BottomScreen() {
   function renderScreen() {
     switch(status){
       case 'loading':
-        return (<p>Loading...</p>);
+        return (<BLoadingScreen />);
       case 'success':
         return (<BScreen2 />);
       default:

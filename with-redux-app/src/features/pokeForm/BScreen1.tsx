@@ -1,7 +1,25 @@
 import PokeGrid from "./PokeGrid-Gen7";
 import Image from 'next/image';
-
+import { useAppSelector, useAppDispatch } from '../../hooks'
+import {
+  setInput,
+  setCurrentPokedexNumber,
+  pokeSubmit,
+  getPokeInput,
+  getPokedexNumber,
+  getStatus,
+  clearOpenAIOutput,
+  clearPokeInput,
+  getGen,
+  increaseGenNum, 
+  decreaseGenNum
+} from './pokeSlice'
 export default function BScreen1() {
+  const dispatch = useAppDispatch()
+
+  const pokedexnumber = useAppSelector(getPokedexNumber)
+  const pokename = useAppSelector(getPokeInput)
+  const genNum = useAppSelector(getGen)
   return (
     <div className="pure-g">
       <div className="pure-u-3-4">
@@ -18,7 +36,10 @@ export default function BScreen1() {
           <div className="box-content">
             <div className="pure-g">
               <div className="pure-u-1-12">
-                <div className="box-arrow-container">
+                <div 
+                  className="box-arrow-container"
+                  onClick={(e) => dispatch(decreaseGenNum())}
+                >
                   <Image 
                     className="box-header" 
                     src={`/backgrounds/box-left.png`} 
@@ -37,10 +58,16 @@ export default function BScreen1() {
                     fill
                     sizes="42vw"
                   />
+                  <div className="gen-text">
+                    GEN {genNum}
+                  </div>
                 </div>
               </div>
               <div className="pure-u-1-12">
-                <div className="box-arrow-container">
+                <div 
+                  className="box-arrow-container"
+                  onClick={(e) => dispatch(increaseGenNum())}
+                >
                   <Image 
                     className="box-header" 
                     src={`/backgrounds/box-right.png`} 

@@ -50,7 +50,7 @@ export default async function getSpotifySongs(req: any, res: any) {
     
 
     //fetching playlist tracks
-    const songs = await fetch(`${playlistsJSON.playlists.items[0].tracks.href}?limit=6`,{
+    const songs = await fetch(`${playlistsJSON.playlists.items[0].tracks.href}`,{
       method: 'GET',
       headers: {
           'Authorization': `Bearer ${repo.access_token}`,
@@ -61,13 +61,16 @@ export default async function getSpotifySongs(req: any, res: any) {
     if (songs.status !== 200) {
       throw songsJSON.error || new Error(`Request failed with status ${songs.status}`);
     }
-    for (var item of songsJSON.items){
-      if (item.track.type == "track"){
-        itemsResponse.push(item.track)
+    //don't want to get all the songs in the beginning of the playlist (usually results in repeat artists)
+    //to get a variety of songs, space out the indicies
+    var i = 0;
+    while ( trackNum <6 && i < songsJSON.items.length){
+      if (songsJSON.items[i].track.type == "track"){
+        itemsResponse.push(songsJSON.items[i].track)
         trackNum++;
       }
+      i+= Math.floor(songsJSON.items.length/6)
     }
-
     //if there are not enough songs (6 songs) in the playlist, just default to searching tracks
     if (trackNum < 6){
       var paramsobj2 = new URLSearchParams(obj);
