@@ -10,6 +10,7 @@ body {
   /* font-size: 16px;
   font-size: clamp(16px, 3vw, 30px); */
 }
+
 @media screen and (min-width: 870px) {
   body {
     font-size: calc(16px + 1vw);
@@ -57,6 +58,7 @@ a {
   /* padding-bottom makes the child relative to this parent container's width */
   padding-bottom: 100%;
 }
+
 .maintain-aspect-ratio-but-fill-screen-width-and-height{
   width: 80vw; 
   height: 80vw; 
@@ -552,4 +554,68 @@ input[type="range"]::-ms-fill-upper {
   height: 5vh;
   display: flex;
   align-content: flex-end;
+}
+
+.controls-container{
+  aspect-ratio: 1/1;
+  position: relative;
+}
+
+.back-arrow{
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.hover-style{
+  cursor: pointer;
+}
+.hover-style:hover{
+  box-shadow: 0px 0px 1px 2px rgb(255, 255, 255);
+}
+
+.pointer-cursor{
+  cursor: pointer;
+}
+
+@media screen and (max-width: 567px) { 
+  .maintain-aspect-ratio-but-fill-screen-width-and-height {
+    width: 95vw;
+    height: 167vw;
+    max-height: 95vh;
+    max-width: 54vh;
+  }
+  .sm-invisible{
+    display: none;
+  }
+  .wrapper-with-intrinsic-ratio.container{
+    padding-bottom: 175%;
+  }
+  .wrapper-with-intrinsic-ratio.topscreen-wrapper{
+    margin-top: 1%;
+  }
+  .camera{
+    margin-top: 4%;
+  }
+  .topscreen{
+    width: 94%;
+  }
+  .topscreen-wrapper{
+    padding-bottom: 69%;
+  }
+  .main-body{
+    border-radius: 30px;
+  }
+  .divider{
+    margin-top: 7.5%;
+  }
+  body{
+    font-size:1rem;
+  }
+  .track-box-container{
+    aspect-ratio: 30/13;
+  }
+  .selected-pokemon-container{
+    width: 45%;
+    padding-bottom: 45%;
+  }
 }

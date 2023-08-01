@@ -6,7 +6,7 @@ import DirectionButton from "./DirectionButton";
 
 export function MainBody() {
   return (
-    <div className="main-body">
+    <div className="main-body ">
       <div className="pure-g">
         <div className="pure-u-1">
           <div className="pure-g">
@@ -21,7 +21,7 @@ export function MainBody() {
             </div>
           </div>
           <div className="pure-g topscreensection">
-            <div className="pure-u-3-24">
+            <div className="pure-u-3-24 sm-invisible">
               <div className="">
                 <div className="speaker right">
                   <svg
@@ -44,10 +44,10 @@ export function MainBody() {
                 </div>
               </div>
             </div>
-            <div className="pure-u-3-4">
+            <div className="pure-u-1 pure-u-sm-3-4">
               <TopScreen />
             </div>
-            <div className="pure-u-3-24">
+            <div className="pure-u-3-24 sm-invisible">
               <div className="">
                 <div className="speaker left">
                   <svg
@@ -79,7 +79,7 @@ export function MainBody() {
             </div>
           </div>
           <div className="pure-g">
-            <div className="pure-u-5-24">
+            <div className="pure-u-5-24 sm-invisible">
               <div className="pure-g centerY">
                 <div className="pure-u-1 center">
                   <div className="joystick right">
@@ -100,10 +100,10 @@ export function MainBody() {
                 </div>
               </div>
             </div>
-            <div className="pure-u-7-12">
+            <div className="pure-u-sm-7-12 pure-u-1">
               <BottomScreen />
             </div>
-            <div className="pure-u-5-24">
+            <div className="pure-u-5-24 sm-invisible">
               <div className="pure-u-1 left">
                 <ABYXButtons />
               </div>
