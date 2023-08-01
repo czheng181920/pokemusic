@@ -22,7 +22,8 @@ export default function PokeGrid() {
   }
   const pokedexnumber = useAppSelector(getPokedexNumber)
   const genNumber = useAppSelector(getGen)
-  var start, end = 1;
+  var start = 1;
+  var end = 1;
   if ( pokenames.gen[genNumber].start && pokenames.gen[genNumber].end ){
     start = pokenames.gen[genNumber].start as number;
     end = pokenames.gen[genNumber].end as number;
