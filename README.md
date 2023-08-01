@@ -1,6 +1,6 @@
 # pokemusic
 clawitzer's fav music: sea shanties 
-this project uses openai, spotify api, and a redux-next.js setup. inspured by when i was asking chatgpt what bulbasaur's favorite music was.
+this project uses openai, spotify api, and a redux-next.js setup. inspired by when i was asking chatgpt what bulbasaur's favorite music was.
 some other good responses from chatgpt:
 - piplup: bubblegum pop music
 - mr. mime: vaudeville music (literally clown music)
