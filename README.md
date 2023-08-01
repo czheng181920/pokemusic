@@ -1,27 +1,14 @@
 # pokemusic
 clawitzer's fav music: sea shanties 
-
-
+this project uses openai, spotify api, and a redux-next.js setup. inspured by when i was asking chatgpt what bulbasaur's favorite music was.
+some other good responses from chatgpt:
+- piplup: bubblegum pop music
+- mr. mime: vaudeville music (literally clown music)
 ## Setup
-# README from openai:
 
-1. If you don’t have Node.js installed, [install it from here](https://nodejs.org/en/) (Node.js version >= 14.6.0 required)
+1. Clone this repository
 
-2. Clone this repository
-
-3. Navigate into the project directory
-
-   ```bash
-   $ cd openai-quickstart-node
-   ```
-
-4. Install the requirements
-
-   ```bash
-   $ npm install
-   ```
-
-5. Make a copy of the example environment variables file
+2. Make a copy of the example environment variables file
 
    On Linux systems: 
    ```bash
@@ -31,15 +18,15 @@ clawitzer's fav music: sea shanties
    ```powershell
    $ copy .env.example .env
    ```
-6. Add your [API key](https://platform.openai.com/account/api-keys) to the newly created `.env` file
+3. Add your [API key](https://platform.openai.com/account/api-keys) spotify client id/secret to the newly created `.env` file
 
-7. Run the app
+4. Run the app
 
    ```bash
    $ npm run dev
    ```
 
-You should now be able to access the app at [http://localhost:3000](http://localhost:3000)! For the full context behind this example app, check out the [tutorial](https://platform.openai.com/docs/quickstart).
+You should now be able to access the app at [http://localhost:3000](http://localhost:3000)!
 
 
 ## credit
