@@ -1,17 +1,12 @@
 import Image from 'next/image';
-import styles from "./index.module.css";
 import pokenames from './pokemonMasterlist.json';
-import { JSX, useState } from 'react';
+import { JSX } from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import {
   setInput,
   setCurrentPokedexNumber,
-  pokeSubmit,
-  getPokeInput,
   getPokedexNumber,
-  getStatus,
-  clearOpenAIOutput,
   getGen,
 } from './pokeSlice'
 import SelectArrow from '../background/SelectArrow';

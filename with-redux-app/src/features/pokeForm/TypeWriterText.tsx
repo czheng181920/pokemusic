@@ -12,8 +12,10 @@ export default function TypeWriterText(props: { text: string; }) {
     if (started) {
       return;
     }
+    
     setStarted(true);
     let i = -1;
+    
     timer = setInterval(() => {
       i++;
       if (i === dummyText.length - 1) clearInterval(timer);

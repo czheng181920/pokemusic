@@ -1,27 +1,6 @@
-import Image from 'next/image';
-import { selectText } from './texts.js';
-import TypeWriterText from './TypeWriterText';
-import { useAppSelector, useAppDispatch } from '../../hooks'
-import {
-  setInput,
-  setCurrentPokedexNumber,
-  pokeSubmit,
-  getPokeInput,
-  getPokedexNumber,
-  getStatus,
-  clearOpenAIOutput,
-  clearPokeInput,
-} from './pokeSlice'
-import { useState } from 'react';
 import TrackBox from './TrackBox';
 
 export default function Screen3() {
-  const dispatch = useAppDispatch()
-
-  const pokedexnumber = useAppSelector(getPokedexNumber)
-  const pokename = useAppSelector(getPokeInput)
-  const[hoverYes,setHoverYes] = useState(false);
-  const[hoverNo,setHoverNo] = useState(false);
 
   return (
     <div className="">

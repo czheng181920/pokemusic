@@ -1,19 +1,13 @@
-import PokeGrid from "./PokeGrid-Gen7";
 import Image from 'next/image';
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import {
-  setInput,
-  setCurrentPokedexNumber,
-  pokeSubmit,
   getGenre,
   getDetails,
   getPokeInput,
   getPokedexNumber,
   getStatus,
   clearOpenAIOutput,
-  clearPokeInput,
 } from './pokeSlice'
-import { useState } from 'react';
 import TypeWriterText from "./TypeWriterText";
 
 export default function BScreen2() {
@@ -47,22 +41,23 @@ export default function BScreen2() {
             <div className="rightflex">
               <div className="footer-button-container" onClick={(e) => dispatch(clearOpenAIOutput())} >
                 <Image 
-                  className="master-ball" 
+                  className="back-arrow" 
                   src={`/backgrounds/back-arrow.png`} 
                   alt='back button'
                   fill
                   sizes="50vw"
                 />
               </div>
-              <div className="footer-button-container">
+              {/* TODO: implement download playlist button */}
+              {/* <div className="footer-button-container">
                 <Image 
-                  className="master-ball" 
+                  className="download-button" 
                   src={`/backgrounds/download-button.png`} 
                   alt='back button'
                   fill
                   sizes="50vw"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

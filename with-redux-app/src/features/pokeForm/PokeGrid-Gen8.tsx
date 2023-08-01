@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import styles from "./index.module.css";
 import pokenames from './pokemonMasterlist.json';
-import { JSX, useState } from 'react';
+import { JSX } from 'react';
+// TODO: implement this for gen 8 and above
 export default function PokeGrid() {
   let pokeImgList: JSX.Element[]  = [];
   pokenames.gen1.forEach((pokename, pokedexNum) => {

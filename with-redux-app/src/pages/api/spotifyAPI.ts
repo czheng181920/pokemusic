@@ -1,12 +1,4 @@
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-
-type Repo = {
-  access_token: string,
-  token_type: string,
-  expires_in: number
-}
-const console = require('console');
-
+const console = require('console'); //debugging
 
 export default async function getSpotifySongs(req: any, res: any) { 
   const console = require('console');
@@ -46,9 +38,7 @@ export default async function getSpotifySongs(req: any, res: any) {
     if (playlists.status !== 200) {
       throw playlistsJSON.error || new Error(`Request failed with status ${playlists.status}`);
     }
-    console.log(playlistsJSON.playlists.items[0].tracks.href);
     
-
     //fetching playlist tracks
     const songs = await fetch(`${playlistsJSON.playlists.items[0].tracks.href}`,{
       method: 'GET',

@@ -2,14 +2,8 @@ import PokeGrid from "./PokeGrid-Gen7";
 import Image from 'next/image';
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import {
-  setInput,
-  setCurrentPokedexNumber,
-  pokeSubmit,
   getPokeInput,
   getPokedexNumber,
-  getStatus,
-  clearOpenAIOutput,
-  clearPokeInput,
   getGen,
   increaseGenNum, 
   decreaseGenNum

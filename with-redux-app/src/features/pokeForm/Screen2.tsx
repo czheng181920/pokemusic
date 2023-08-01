@@ -3,13 +3,9 @@ import { selectText } from './texts.js';
 import TypeWriterText from './TypeWriterText';
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import {
-  setInput,
-  setCurrentPokedexNumber,
   pokeSubmit,
   getPokeInput,
   getPokedexNumber,
-  getStatus,
-  clearOpenAIOutput,
   clearPokeInput,
 } from './pokeSlice'
 import { useState } from 'react';
@@ -23,7 +19,6 @@ export default function Screen2() {
   const[hoverYes,setHoverYes] = useState(false);
   const[hoverNo,setHoverNo] = useState(false);
   const pokeInput = useAppSelector(getPokeInput)
-  const status =  useAppSelector(getStatus)
 
   function submitPoke(){
     dispatch(pokeSubmit(pokeInput))

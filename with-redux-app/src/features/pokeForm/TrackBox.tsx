@@ -1,17 +1,7 @@
-import { useAppSelector, useAppDispatch } from '../../hooks'
+import { useAppSelector } from '../../hooks'
 import Pause from './Pause';
 import Play from './Play';
-import {
-  setInput,
-  setCurrentPokedexNumber,
-  pokeSubmit,
-  getPokeInput,
-  getPokedexNumber,
-  getStatus,
-  getTracks,
-  clearOpenAIOutput,
-  clearPokeInput,
-} from './pokeSlice'
+import { getTracks } from './pokeSlice'
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function TrackBox(props: { tracknum : number }) {

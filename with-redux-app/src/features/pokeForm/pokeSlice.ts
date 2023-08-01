@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice, isRejectedWithValue, PayloadAction } from '@reduxjs/toolkit'
-import type { AppState, AppThunk } from '../../store'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { AppState } from '../../store'
 
 import { generateSpotifySong, submitPokemon } from './pokeOpenAIAPI'
 
@@ -58,10 +58,8 @@ export const pokeSubmit = createAsyncThunk(
         throw new Error(`Request response invalid. Expecting a response with only one colon. Please try again.`);
       }
       const genreInput = data[0];
-      console.log('uhsdhfasdf', genreInput)
       const tracksdata = await generateSpotifySong(genreInput);
       //checking trackdata
-      console.log(tracksdata, 'asdfasdfa')
       if(tracksdata.result) {
         for (var track of tracksdata.result){
           let curr: Track;

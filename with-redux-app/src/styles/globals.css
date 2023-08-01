@@ -319,8 +319,8 @@ a {
 
 .selected-pokemon-container{
   position: relative;
-  width:35%;
-  padding-bottom:35%;
+  width:34%;
+  padding-bottom:34%;
 }
 
 .selected-pokemon-name-container {
@@ -371,7 +371,8 @@ a {
 .footer-button-container{
   width: 7%;
   padding-bottom: 7%;
-  padding-top: 1%;
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
   position: relative; 
   margin-right: 2%;
 }

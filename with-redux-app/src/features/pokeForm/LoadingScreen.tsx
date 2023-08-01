@@ -1,7 +1,4 @@
 import Image from 'next/image';
-import { loadingText, selectText } from './texts.js';
-import TypeWriterText from './TypeWriterText';
-import { useState } from 'react';
 
 export default function LoadingScreen() {
 
