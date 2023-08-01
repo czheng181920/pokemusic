@@ -21,8 +21,8 @@ export default function TypeWriterText(props: { text: string; }) {
       if (i === dummyText.length - 1) clearInterval(timer);
       setText((prev) => prev + dummyText[i]);
       ref.current?.scrollIntoView({
-        behavior: "instant",
-        block: "end"
+        behavior: "instant" as ScrollBehavior,
+        block: "end" as ScrollLogicalPosition
       })
     }, 20);
   };
