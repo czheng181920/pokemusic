@@ -5,9 +5,10 @@ import { getTracks } from './pokeSlice'
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function TrackBox(props) {
-  var tracks = useAppSelector(getTracks)
-  var track = tracks[props.tracknum] 
-
+  var tracks = useAppSelector(getTracks);
+  var track = tracks[props.tracknum];
+  var hoverStyle = track.play.length > 0 ? "hover-style" : "";
+  var pointerStyle = track.play.length > 0 ? "pointer-cursor" : "";
   const audioRef = useRef(null);
   const progressBarRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -77,9 +78,10 @@ export default function TrackBox(props) {
       )
     }
   }
+  
   return (
-    <div className="track-container">
-      <img className="albumart" src={track.albumArt} alt="album-art" />
+    <div className="track-container ">
+      <img className={`albumart ${hoverStyle}`} src={track.albumArt} alt="album-art" onClick={togglePlayPause}/>
       <div className="track-box-container">
         <div className="artist">
           <div className="artist-text-container">
@@ -90,7 +92,7 @@ export default function TrackBox(props) {
         <a href={track.url} target="_blank">{track.title}</a>
         </div>
         <div className="audio-player-container">
-          <div className="play-pause" onClick={togglePlayPause}>
+          <div className={`play-pause ${pointerStyle}`} onClick={togglePlayPause}>
             {isPlaying ? <Pause /> : <Play />}
           </div>
           <div className="slider-container">

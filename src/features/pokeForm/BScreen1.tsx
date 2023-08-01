@@ -31,11 +31,11 @@ export default function BScreen1() {
             <div className="pure-g">
               <div className="pure-u-1-12">
                 <div 
-                  className="box-arrow-container"
+                  className="box-arrow-container pointer-cursor"
                   onClick={(e) => dispatch(decreaseGenNum())}
                 >
                   <Image 
-                    className="box-header" 
+                    className="header-left-arrow" 
                     src={`/backgrounds/box-left.png`} 
                     alt={"box-header"} 
                     fill
@@ -59,11 +59,11 @@ export default function BScreen1() {
               </div>
               <div className="pure-u-1-12">
                 <div 
-                  className="box-arrow-container"
+                  className="box-arrow-container pointer-cursor"
                   onClick={(e) => dispatch(increaseGenNum())}
                 >
                   <Image 
-                    className="box-header" 
+                    className="header-right-arrow" 
                     src={`/backgrounds/box-right.png`} 
                     alt={"box-header"} 
                     fill

@@ -41,7 +41,7 @@ export default function BScreen2() {
             <div className="rightflex">
               <div className="footer-button-container" onClick={(e) => dispatch(clearOpenAIOutput())} >
                 <Image 
-                  className="back-arrow" 
+                  className="back-arrow hover-style" 
                   src={`/backgrounds/back-arrow.png`} 
                   alt='back button'
                   fill

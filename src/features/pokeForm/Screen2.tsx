@@ -59,7 +59,7 @@ export default function Screen2() {
           <div className="select-pokemon">
             <div className="textbox select">
               <div 
-                className="yes"
+                className="yes pointer-cursor"
                 onClick={(e) => submitPoke()}
                 onMouseOver={(e) => setHoverYes(true)}
                 onMouseOut={(e) => setHoverYes(false)}
@@ -68,7 +68,7 @@ export default function Screen2() {
                 {hoverYes ? <SelectArrow2 /> : <div className=""></div> }
               </div>
               <div 
-                className="no"
+                className="no pointer-cursor"
                 onClick={(e) => dispatch(clearPokeInput())}
                 onMouseOver={(e) => setHoverNo(true)}
                 onMouseOut={(e) => setHoverNo(false)}
