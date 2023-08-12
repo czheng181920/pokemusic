@@ -16,7 +16,7 @@ export default function BScreen1() {
   const genNum = useAppSelector(getGen)
   return (
     <div className="pure-g">
-      <div className="pure-u-3-4">
+      <div className="pure-u-1 pure-u-md-7-8">
         <div className="box-container">
           <div className="box-wallpaper-container">
             <Image 

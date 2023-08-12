@@ -39,6 +39,15 @@ export default function BScreen2() {
         <div className="footer-container">
           <div className="absolute">
             <div className="rightflex">
+              <div className="footer-button-container">
+                <Image 
+                  className="spotify-logo" 
+                  src={`/backgrounds/spotify-logo.png`} 
+                  alt='back button'
+                  fill
+                  sizes="50vw"
+                />
+              </div>
               <div className="footer-button-container" onClick={(e) => dispatch(clearOpenAIOutput())} >
                 <Image 
                   className="back-arrow hover-style" 
