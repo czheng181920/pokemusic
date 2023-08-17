@@ -10,18 +10,6 @@ body {
   /* font-size: 16px;
   font-size: clamp(16px, 3vw, 30px); */
 }
-
-@media screen and (min-width: 870px) {
-  body {
-    font-size: calc(16px + 0.3vw);
-  }
-}
-@media screen and (min-width: 1920px) {
-  body {
-    font-size: 2rem;
-  }
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -252,7 +240,7 @@ a {
 .pokegrid-ratio-container{
   width: 100%;
   position: relative;
-  padding-bottom: 91%;
+  padding-bottom: 64%;
 }
 .absolute {
   position: absolute;
@@ -277,7 +265,7 @@ a {
 }
 .textbox {
   background: #dbd5e5;
-  border-radius: 32px;
+  border-radius: 30px;
   border-style: solid;
   border-color: #35303c;
   border-width: 5px;
@@ -288,7 +276,14 @@ a {
     inset 0px 0px 0px 2px rgba(219, 213, 229, 1),
     inset 0px 0px 10px 10px rgba(0, 0, 0, 0.25);
   padding: 20px;
+}
+.text-content{
   overflow-y: scroll;
+  height: 87%;
+  position: absolute;
+  top: 7px;
+  width: 90%;
+  padding-top: 10px;
 }
 .wrapper {
   position: relative;
@@ -587,6 +582,33 @@ input[type="range"]::-ms-fill-upper {
 .pointer-cursor{
   cursor: pointer;
 }
+.loading-text{
+  height:30%;
+}
+/* Scrollbar on Firefox */
+* {
+  scrollbar-color: blue orange;
+}
+
+/* Scrollbar on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #35303C;
+  border-radius: 20px;
+  border: 3px solid #35303C;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #585360;
+  border: 3px solid #585360;
+}
 
 @media screen and (max-width: 567px) { 
   .maintain-aspect-ratio-but-fill-screen-width-and-height {
@@ -628,5 +650,28 @@ input[type="range"]::-ms-fill-upper {
   .selected-pokemon-container{
     width: 45%;
     padding-bottom: 45%;
+  }
+  .textbox{
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: calc(16px + 0.3vw);
+  }
+  .gen-text{
+    font-size: calc(16px + 1vw);
+  }
+  .pokegrid-ratio-container{
+    padding-bottom: 75%;
+  }
+}
+@media screen and (min-width: 1920px) {
+  body {
+    font-size: 2rem;
+  }
+  .gen-text{
+    font-size: calc(16px + 1vw);
   }
 }

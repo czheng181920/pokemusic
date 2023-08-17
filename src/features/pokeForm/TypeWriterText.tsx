@@ -40,8 +40,10 @@ export default function TypeWriterText(props: { text: string; }) {
   }, []);
   return (
     <div className="textbox">
-      {!text ? "_" : text}
-      <div ref={ref} style={{marginTop: '2%'}} />
+      <div className="text-content">
+        {!text ? "_" : text}
+        <div ref={ref} style={{marginTop: '2%'}} />
+      </div>
     </div>
     )
 }
