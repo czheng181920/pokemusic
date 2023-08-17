@@ -587,12 +587,12 @@ input[type="range"]::-ms-fill-upper {
 }
 /* Scrollbar on Firefox */
 * {
-  scrollbar-color: blue orange;
+  scrollbar-color: #35303C transparent;
 }
 
 /* Scrollbar on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 
 *::-webkit-scrollbar-track {
