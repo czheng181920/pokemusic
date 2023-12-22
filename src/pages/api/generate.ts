@@ -32,7 +32,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse<Respons
 
   try {
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "gpt-3.5-turbo-instruct",
       prompt: generatePrompt(pokemon),
       max_tokens: 400,
       temperature: 1,
