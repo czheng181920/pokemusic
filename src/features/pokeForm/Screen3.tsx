@@ -3,7 +3,7 @@ import TrackBox from './TrackBox';
 export default function Screen3() {
 
   return (
-    <div className="">
+    <div className="paddingLeft">
       <div className="pure-g">
         <div className="pure-u-1 pure-u-sm-1-2">
           <div className="pure-g spacer">

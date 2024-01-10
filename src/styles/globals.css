@@ -387,6 +387,7 @@ h1{
 .no, .yes{
   position: relative;
   display: block;
+  margin: 3px 0px;
 }
 
 .footer-container{
@@ -477,6 +478,10 @@ h1{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.paddingLeft{
+  padding-left: 5px;
+  padding-top: 5px;
 }
 .audio-player-container{
   width: 70%;
@@ -703,7 +708,7 @@ input[type="range"]::-ms-fill-upper {
     border-radius: 20px;
   }
   .top-textbox-container{
-    padding-top: 35%;
+    padding-top: 30%;
   }
   .spacer-r{
     padding-top: 5px;
