@@ -190,7 +190,7 @@ h1{
 
 .pokegrid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(50px,1fr));
   grid-row-gap: 0px;
 }
 
@@ -356,11 +356,15 @@ h1{
 .master-ball{
   object-fit: contain;
   object-position: left;
+  z-index: 20;
 }
 
 .pokename {
   margin-left: 13%;
   font-size: larger;
+  z-index: 50;
+  position:relative;
+
 }
 .select-arrow-container2{
   position: absolute;

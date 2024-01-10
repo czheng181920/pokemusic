@@ -29,7 +29,7 @@ export default function BScreen1() {
           </div>
           <div className="box-content">
             <div className="pure-g">
-              <div className="pure-u-1-12">
+              <div className="pure-u-1-12" role="navigation">
                 <button 
                   type="button"
                   className="box-arrow-container pointer-cursor"
