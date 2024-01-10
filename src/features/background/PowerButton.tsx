@@ -5,7 +5,7 @@ export default function PowerButton() {
         <Image 
         className="powerbutton"
         src={`/3ds/power.png`} 
-        alt={"power-button"} 
+        alt={""} 
         fill={true}
         sizes="20vw"
         />

@@ -32,7 +32,7 @@ export default function Screen2() {
             <Image 
               className="master-ball" 
               src={`/backgrounds/master-ball.png`} 
-              alt='master ball'
+              alt=''
               fill
               sizes="50vw"
             />
@@ -58,7 +58,8 @@ export default function Screen2() {
         <div className="rightflex">
           <div className="select-pokemon">
             <div className="textbox select">
-              <div 
+              <button 
+                type='submit'
                 className="yes pointer-cursor"
                 onClick={(e) => submitPoke()}
                 onMouseOver={(e) => setHoverYes(true)}
@@ -66,8 +67,9 @@ export default function Screen2() {
               >
                 YES
                 {hoverYes ? <SelectArrow2 /> : <div className=""></div> }
-              </div>
-              <div 
+              </button>
+              <button 
+                type='button'
                 className="no pointer-cursor"
                 onClick={(e) => dispatch(clearPokeInput())}
                 onMouseOver={(e) => setHoverNo(true)}
@@ -75,7 +77,7 @@ export default function Screen2() {
               >
                 NO
                 {hoverNo ? <SelectArrow2 /> : <div className=""></div> }
-              </div>
+              </button>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ export default function DirectionButton() {
         <Image 
         className="directionbutton"
         src={`/3ds/directionbutton.png`} 
-        alt={"direction-button"} 
+        alt={""} 
         fill={true}
         sizes="50vw"
         />

@@ -6,7 +6,7 @@ export default function Play() {
       <Image 
       className="play-button" 
       src={`/backgrounds/play-button.png`} 
-      alt='back button'
+      alt='Play Music'
       fill
       sizes="25vw"
     />

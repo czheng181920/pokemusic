@@ -22,9 +22,9 @@ export default function BScreen2() {
   return (
     <div className="pure-g">
       <div className="pure-u-1">
-        <div className="selected-pokemon-name-container" style={{paddingLeft: '2%'}}>
+        <h1 className="selected-pokemon-name-container" style={{paddingLeft: '2%'}}>
           {pokename.toUpperCase()}'S FAVORITE MUSIC
-        </div>
+        </h1>
       </div>
       <div className="pure-u-1 scroll">
         <div className="wrapper">
@@ -43,20 +43,20 @@ export default function BScreen2() {
                 <Image 
                   className="spotify-logo" 
                   src={`/backgrounds/spotify-logo.png`} 
-                  alt='back button'
+                  alt='Spotify Logo'
                   fill
                   sizes="50vw"
                 />
               </div>
-              <div className="footer-button-container" onClick={(e) => dispatch(clearOpenAIOutput())} >
+              <button type='button' className="footer-button-container" onClick={(e) => dispatch(clearOpenAIOutput())} >
                 <Image 
                   className="back-arrow hover-style" 
                   src={`/backgrounds/back-arrow.png`} 
-                  alt='back button'
+                  alt='Back Arrow'
                   fill
                   sizes="50vw"
                 />
-              </div>
+              </button>
               {/* TODO: implement download playlist button */}
               {/* <div className="footer-button-container">
                 <Image 

@@ -5,7 +5,7 @@ export default function SelectArrow2() {
         <Image 
           className="select-arrow2" 
           src={`/backgrounds/select-arrow2.png`} 
-          alt="select arrow"
+          alt="Arrow indicating selection"
           fill
           sizes="20vw"
         />

@@ -22,7 +22,7 @@ export default function BScreen1() {
             <Image 
               className="box-wallpaper" 
               src={`/backgrounds/box-wallpaper.png`} 
-              alt={"box-wallpaper"} 
+              alt={""} 
               fill
               sizes="42vw"
             />
@@ -30,46 +30,48 @@ export default function BScreen1() {
           <div className="box-content">
             <div className="pure-g">
               <div className="pure-u-1-12">
-                <div 
+                <button 
+                  type="button"
                   className="box-arrow-container pointer-cursor"
                   onClick={(e) => dispatch(decreaseGenNum())}
                 >
                   <Image 
                     className="header-left-arrow" 
                     src={`/backgrounds/box-left.png`} 
-                    alt={"box-header"} 
+                    alt={"View Previous Generation"} 
                     fill
                     sizes="42vw"
                   />
-                </div>
+                </button>
               </div>
               <div className="pure-u-5-6">
                 <div className="box-header-container">
                   <Image 
                     className="box-header" 
                     src={`/backgrounds/box-header.png`} 
-                    alt={"box-header"} 
+                    alt={""} 
                     fill
                     sizes="42vw"
                   />
-                  <div className="gen-text">
+                  <h1 className="gen-text">
                     GEN {genNum}
-                  </div>
+                  </h1>
                 </div>
               </div>
               <div className="pure-u-1-12">
-                <div 
+                <button 
+                  type='button'
                   className="box-arrow-container pointer-cursor"
                   onClick={(e) => dispatch(increaseGenNum())}
                 >
                   <Image 
                     className="header-right-arrow" 
                     src={`/backgrounds/box-right.png`} 
-                    alt={"box-header"} 
+                    alt={"View Next Generation"} 
                     fill
                     sizes="42vw"
                   />
-                </div>
+                </button>
               </div>
             </div>
             <div className="pure-g">

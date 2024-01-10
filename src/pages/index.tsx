@@ -12,20 +12,18 @@ const IndexPage: NextPage = () => {
       </Head>
       <Container />
       <div className="logo-container bottom">
-        <a href="https://github.com/czheng181920/pokemusic/blob/main/README.md">
-        </a>
         <div className="rightflex">
-          <div className="footer-button-container2">
+          <footer className="footer-button-container2">
             <a href="https://github.com/czheng181920/pokemusic/blob/main/README.md">
               <Image 
                   className="spotify-logo" 
                   src={`/backgrounds/github-mark-white.png`} 
-                  alt='back button'
+                  alt='Github Link'
                   fill
                   sizes="50vw"
                 />
             </a>
-          </div>
+          </footer>
           {/* TODO: implement download playlist button */}
           {/* <div className="footer-button-container">
             <Image 

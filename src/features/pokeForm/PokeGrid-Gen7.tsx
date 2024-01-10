@@ -30,19 +30,24 @@ export default function PokeGrid() {
   } //maybe put error handling if it doesnt exist lol
   for (let i = start; i <= end; i++){
     pokeImgList.push(
-      <div className="gridcell7 center-bottom" key={pokenames.names[i]}>
+      <button 
+        type="button" 
+        className="gridcell7 center-bottom" 
+        key={pokenames.names[i]}
+        onClick={(e) => dispatchPokemon(pokenames.names[i], i)}
+      >
         <div className="crop7">
           <Image 
             className="gen-7-icons" 
             src={`/pokeicons/icons-gen7/${i}.png`} 
-            alt={pokenames.names[i]} 
+            alt={"Select " + pokenames.names[i]} 
             fill
             sizes="30vw"
-            onClick={(e) => dispatchPokemon(pokenames.names[i], i)}
+            
           />
         </div>
         {pokedexnumber == i ? <SelectArrow /> : <div className="div"></div> }
-      </div>
+      </button>
     )
   }
   return (

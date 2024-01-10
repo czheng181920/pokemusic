@@ -81,7 +81,12 @@ export default function TrackBox(props) {
   
   return (
     <div className="track-container ">
-      <img className={`albumart ${hoverStyle}`} src={track.albumArt} alt="album-art" onClick={togglePlayPause}/>
+      <button 
+        type='button'
+        className='displayBlock'
+        onClick={togglePlayPause}>
+        <img className={`albumart ${hoverStyle}`} src={track.albumArt} alt={track.title + " album art"} />
+      </button>
       <div className="track-box-container">
         <div className="artist">
           <div className="artist-text-container">
@@ -92,9 +97,12 @@ export default function TrackBox(props) {
         <a href={track.url} target="_blank">{track.title}</a>
         </div>
         <div className="audio-player-container">
-          <div className={`play-pause ${pointerStyle}`} onClick={togglePlayPause}>
+          <button 
+            className={`play-pause ${pointerStyle}`} 
+            onClick={togglePlayPause} 
+            type='button'>
             {isPlaying ? <Pause /> : <Play />}
-          </div>
+          </button>
           <div className="slider-container">
             <input 
               type="range" 

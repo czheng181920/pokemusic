@@ -11,7 +11,7 @@ export default function Screen1() {
             <Image 
               className="profOak" 
               src={`/backgrounds/prof-oak.png`} 
-              alt="professor-oak"
+              alt="professor oak"
               fill
               sizes="20vw"
             />

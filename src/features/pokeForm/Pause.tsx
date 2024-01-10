@@ -6,7 +6,7 @@ export default function Pause() {
       <Image 
       className="pause-button" 
       src={`/backgrounds/pause-button.png`} 
-      alt='back button'
+      alt='Pause Music'
       fill
       sizes="25vw"
     />

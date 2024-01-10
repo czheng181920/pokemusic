@@ -19,6 +19,27 @@ a {
   box-sizing: border-box;
 }
 
+button {
+  background: none;
+  color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  display:block
+}
+button:focus{
+  box-shadow:  0px 0px 1px 2px rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+h1{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
 .center {
   width: 100%;
   display: grid;
@@ -234,7 +255,10 @@ a {
 }
 .box-arrow-container {
   position: relative;
-  padding-bottom: 200%;
+  display: block;
+  padding-bottom: 150%;
+  width: 100%;
+  margin-top: 55%;
 }
 
 .pokegrid-ratio-container{
@@ -340,14 +364,16 @@ a {
 }
 .select-arrow-container2{
   position: absolute;
-  padding-bottom: 110%;
-  width: 110%;
-  left: -130%;
-  top: -10%;
+  padding-bottom: 1.2rem;
+  width: 1.2rem;
+  left: -1.5rem;
+  top: -0.2rem;
+  display: block;
 }
 
 .no, .yes{
   position: relative;
+  display: block;
 }
 
 .footer-container{
@@ -658,10 +684,10 @@ input[type="range"]::-ms-fill-upper {
 
 @media screen and (min-width: 768px) {
   body {
-    font-size: calc(16px + 0.3vw);
+    font-size: calc(1rem + 0.3vw);
   }
   .gen-text{
-    font-size: calc(16px + 1vw);
+    font-size: calc(1rem + 1vw);
   }
   .pokegrid-ratio-container{
     padding-bottom: 75%;
@@ -672,6 +698,6 @@ input[type="range"]::-ms-fill-upper {
     font-size: 2rem;
   }
   .gen-text{
-    font-size: calc(16px + 1vw);
+    font-size: calc(1rem + 1vw);
   }
 }
