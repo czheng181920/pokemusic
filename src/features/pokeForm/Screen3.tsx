@@ -5,7 +5,7 @@ export default function Screen3() {
   return (
     <div className="">
       <div className="pure-g">
-        <div className="pure-u-1-2">
+        <div className="pure-u-1 pure-u-sm-1-2">
           <div className="pure-g spacer">
             <div className="pure-u-1">
               <TrackBox tracknum = {0} />
@@ -18,7 +18,7 @@ export default function Screen3() {
             </div>
           </div>
         </div>
-        <div className="pure-u-1-2">
+        <div className="pure-u-1 pure-u-sm-1-2">
           <div className="pure-g spacer spacer-r">
             <div className="pure-u-1">
               <TrackBox tracknum = {1} />

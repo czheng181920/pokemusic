@@ -18,9 +18,7 @@ export default function BottomScreen() {
   }
   return (
     <div className="wrapper-with-intrinsic-ratio bottomscreen-wrapper center">
-      <div className="bottomscreen screen">
         {renderScreen()}
-      </div>
     </div>
     )
 }

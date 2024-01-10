@@ -83,7 +83,6 @@ export default function TrackBox(props) {
     <div className="track-container ">
       <button 
         type='button'
-        className='displayBlock'
         onClick={togglePlayPause}>
         <img className={`albumart ${hoverStyle}`} src={track.albumArt} alt={track.title + " album art"} />
       </button>

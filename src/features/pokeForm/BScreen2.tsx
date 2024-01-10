@@ -20,22 +20,18 @@ export default function BScreen2() {
   const genre = useAppSelector(getGenre)
   const details = useAppSelector(getDetails)
   return (
-    <div className="pure-g">
-      <div className="pure-u-1">
+    <div className="bottomscreen screen bottomscreenstretch">
+      <div className="pure-g">
         <h1 className="selected-pokemon-name-container" style={{paddingLeft: '2%'}}>
           {pokename.toUpperCase()}'S FAVORITE MUSIC
         </h1>
       </div>
-      <div className="pure-u-1 scroll">
-        <div className="wrapper">
-          <div className="bottom-textbox-container">
-            <div className="absolute">
+      <div className="pure-g scroll grow">
+        <div className="pure-u-1 wrapper fullHeight">
               <TypeWriterText text={`${pokename.toUpperCase()} enjoys listening to ${genre.toUpperCase()} music. ${details}`}/>
-            </div>
-          </div>
         </div>
       </div>
-      <div className="pure-u-1 bottom">
+      <div className="pure-g ">
         <div className="footer-container">
           <div className="absolute">
             <div className="rightflex">

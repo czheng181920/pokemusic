@@ -27,7 +27,7 @@ button {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-  display:block
+  display:block;
 }
 button:focus{
   box-shadow:  0px 0px 1px 2px rgb(255, 255, 255);
@@ -68,6 +68,9 @@ h1{
   padding-bottom: 100%;
 }
 
+.fullHeight{
+  height:100%;
+}
 .maintain-aspect-ratio-but-fill-screen-width-and-height{
   width: 90vw; 
   height: 90vw; 
@@ -147,6 +150,12 @@ h1{
 	width: 94%;
 	height: 100%;
   overflow: hidden;
+}
+
+.bottomscreenstretch{
+  display:flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .joystick {
@@ -284,7 +293,7 @@ h1{
 }
 .bottom-textbox-container{
   width: 100%;
-  padding-top: 54%; 
+  /* padding-top: 54%;  */
   position: relative; /* If you want text inside of it */
 }
 .textbox {
@@ -360,7 +369,7 @@ h1{
 }
 
 .pokename {
-  margin-left: 13%;
+  margin-left: 2rem;
   font-size: larger;
   z-index: 50;
   position:relative;
@@ -493,6 +502,10 @@ h1{
   padding-top: 1%;
   line-height: 0px;
   height: 100%;
+}
+
+.grow{
+  flex-grow: 2;
 }
 input[type="range"] {
   -webkit-appearance: none;
@@ -661,6 +674,7 @@ input[type="range"]::-ms-fill-upper {
   }
   .topscreen{
     width: 94%;
+    overflow-y: scroll;
   }
   .topscreen-wrapper{
     padding-bottom: 69%;
@@ -675,7 +689,11 @@ input[type="range"]::-ms-fill-upper {
     font-size:1rem;
   }
   .track-box-container{
-    aspect-ratio: 30/13;
+    aspect-ratio: auto;
+    overflow-y: scroll;
+  }
+  .track-title{
+    aspect-ratio: auto;
   }
   .selected-pokemon-container{
     width: 45%;
@@ -683,6 +701,12 @@ input[type="range"]::-ms-fill-upper {
   }
   .textbox{
     border-radius: 20px;
+  }
+  .top-textbox-container{
+    padding-top: 35%;
+  }
+  .spacer-r{
+    padding-top: 5px;
   }
 }
 
