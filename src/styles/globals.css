@@ -29,9 +29,19 @@ button {
 	outline: inherit;
   display:block;
 }
+
 button:focus{
   box-shadow:  0px 0px 1px 2px rgb(255, 255, 255);
   border-radius: 5px;
+}
+
+button:focus:not(:focus-visible) {
+  box-shadow: none;
+  outline: 0;
+}
+
+button.albumart {
+  border-radius: 0px;
 }
 
 h1{
@@ -463,12 +473,13 @@ h1{
 }
 
 .albumart{
-  aspect-ratio: 1/1;
   width: 9%;
+  aspect-ratio: 1/1;
   position: absolute;
   border: 2px solid black;
   box-shadow: 0px 0px 1px 1px rgba(219, 213, 229, 1);
   z-index: 20;
+  overflow: hidden;
 }
 
 .track-title{
