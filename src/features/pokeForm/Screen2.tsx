@@ -18,6 +18,8 @@ export default function Screen2() {
   const pokename = useAppSelector(getPokeInput)
   const[hoverYes,setHoverYes] = useState(false);
   const[hoverNo,setHoverNo] = useState(false);
+  const[focusYes,setFocusYes] = useState(false);
+  const[focusNo,setFocusNo] = useState(false);
   const pokeInput = useAppSelector(getPokeInput)
 
   function submitPoke(){
@@ -64,9 +66,11 @@ export default function Screen2() {
                 onClick={(e) => submitPoke()}
                 onMouseOver={(e) => setHoverYes(true)}
                 onMouseOut={(e) => setHoverYes(false)}
+                onFocus={(e) => setFocusYes(true)}
+                onBlur={(e) => setFocusYes(false)}
               >
                 YES
-                {hoverYes ? <SelectArrow2 /> : <div className=""></div> }
+                {(hoverYes && !focusNo) || (focusYes && !hoverYes) ? <SelectArrow2 /> : <div className=""></div> }
               </button>
               <button 
                 type='button'
@@ -74,9 +78,12 @@ export default function Screen2() {
                 onClick={(e) => dispatch(clearPokeInput())}
                 onMouseOver={(e) => setHoverNo(true)}
                 onMouseOut={(e) => setHoverNo(false)}
+                autoFocus
+                onFocus={(e) => setFocusNo(true)}
+                onBlur={(e) => setFocusNo(false)}
               >
                 NO
-                {hoverNo ? <SelectArrow2 /> : <div className=""></div> }
+                {(hoverNo && !focusYes) || (focusNo && !hoverYes) ? <SelectArrow2 /> : <div className=""></div> }
               </button>
             </div>
           </div>
