@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { welcomeText } from './texts.js';
-import TypeWriterText from './TypeWriterText';
+import Text from './Text';
 
 export default function Screen1() {
   return (
@@ -21,7 +21,7 @@ export default function Screen1() {
       <div className="pure-u-1 bottom">
         <div className="top-textbox-container">
           <div className="absolute">
-            <TypeWriterText text={welcomeText}/>
+            <Text text={welcomeText}/>
           </div>
         </div>
       </div>

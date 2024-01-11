@@ -1,5 +1,5 @@
 import { loadingText } from './texts.js';
-import TypeWriterText from './TypeWriterText';
+import Text from './Text';
 
 export default function BLoadingScreen() {
 
@@ -7,7 +7,7 @@ export default function BLoadingScreen() {
     <div className="bottomscreen screen">
       <div className="pure-g">
         <div className="pure-u-1 bottom loading-text">
-          <TypeWriterText text={loadingText}/>
+          <Text text={loadingText}/>
         </div>
       </div>
     </div>

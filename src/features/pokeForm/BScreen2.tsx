@@ -8,7 +8,7 @@ import {
   getStatus,
   clearOpenAIOutput,
 } from './pokeSlice'
-import TypeWriterText from "./TypeWriterText";
+import Text from "./Text";
 
 export default function BScreen2() {
   const dispatch = useAppDispatch()
@@ -28,7 +28,7 @@ export default function BScreen2() {
       </div>
       <div className="pure-g scroll grow">
         <div className="pure-u-1 wrapper fullHeight">
-              <TypeWriterText text={`${pokename.toUpperCase()} enjoys listening to ${genre.toUpperCase()} music. ${details}`}/>
+              <Text text={`${pokename.toUpperCase()} enjoys listening to ${genre.toUpperCase()} music. ${details}`}/>
         </div>
       </div>
       <div className="pure-g ">

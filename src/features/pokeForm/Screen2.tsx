@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { selectText } from './texts.js';
-import TypeWriterText from './TypeWriterText';
+import Text from './Text';
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import {
   pokeSubmit,
@@ -84,7 +84,7 @@ export default function Screen2() {
           <div className="wrapper">
             <div className="top-textbox-container">
               <div className="absolute">
-                <TypeWriterText text={selectText}/>
+                <Text text={selectText}/>
               </div>
             </div>
           </div>
