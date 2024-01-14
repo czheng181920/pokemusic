@@ -70,7 +70,7 @@ export default function Screen2() {
                 onBlur={(e) => setFocusYes(false)}
               >
                 YES
-                {(hoverYes && !focusNo) || (focusYes && !hoverYes) ? <SelectArrow2 /> : <div className=""></div> }
+                { hoverYes || (focusYes && !hoverNo) ? <SelectArrow2 /> : <div className=""></div> }
               </button>
               <button 
                 type='button'
@@ -83,7 +83,7 @@ export default function Screen2() {
                 onBlur={(e) => setFocusNo(false)}
               >
                 NO
-                {(hoverNo && !focusYes) || (focusNo && !hoverYes) ? <SelectArrow2 /> : <div className=""></div> }
+                {hoverNo || (focusNo && !hoverYes) ? <SelectArrow2 /> : <div className=""></div> }
               </button>
             </div>
           </div>
