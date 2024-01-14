@@ -85,6 +85,7 @@ export default function TrackBox(props) {
         type='button'
         onClick={togglePlayPause}
         className={`albumart ${hoverStyle}`} 
+        disabled={hoverStyle ? false : true}
       >
         <img 
           sizes="20vw" 

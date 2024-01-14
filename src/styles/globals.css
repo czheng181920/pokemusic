@@ -25,7 +25,6 @@ button {
 	border: none;
 	padding: 0;
 	font: inherit;
-	cursor: pointer;
 	outline: inherit;
   display:block;
 }
@@ -219,6 +218,7 @@ h1{
 }
 .gridcell7 {
   position: relative;
+  cursor: pointer;
 }
 .box-container {
   width: 97%;
@@ -482,6 +482,10 @@ h1{
   overflow: hidden;
 }
 
+.albumart:focus:not(:focus-visible){
+  box-shadow: 0px 0px 1px 1px rgba(219, 213, 229, 1);
+}
+
 .track-title{
   aspect-ratio: 10/1;
   width: 100%;
@@ -635,6 +639,9 @@ input[type="range"]::-ms-fill-upper {
   cursor: pointer;
 }
 .hover-style:hover{
+  box-shadow: 0px 0px 1px 2px rgb(255, 255, 255);
+}
+.hover-style:hover:focus{
   box-shadow: 0px 0px 1px 2px rgb(255, 255, 255);
 }
 
