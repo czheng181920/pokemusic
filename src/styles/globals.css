@@ -771,6 +771,9 @@ input[type="range"]::-ms-fill-upper {
   .pokegrid-ratio-container{
     padding-bottom: 75%;
   }
+  .pokegrid {
+    grid-template-columns: repeat(6, minmax(2rem,1fr));
+  }
 }
 @media screen and (min-width: 1920px) {
   body {
