@@ -207,9 +207,23 @@ h1{
 }
 
 .pokegrid {
+  /**
+  * input values to create a responsive grid but with max # of columns 
+  */
+  --grid-layout-gap: 0px;
+  --grid-column-count: 6;
+  --grid-item--min-width: 40px;
+
+  /**
+  * Calculated values.
+  */
+  --gap-count: calc(var(--grid-column-count) - 1);
+  --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+  --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px,1fr));
-  grid-row-gap: 0px;
+  grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
+  grid-gap: var(--grid-layout-gap);
 }
 
 .gridcell {
@@ -770,9 +784,6 @@ input[type="range"]::-ms-fill-upper {
   }
   .pokegrid-ratio-container{
     padding-bottom: 75%;
-  }
-  .pokegrid {
-    grid-template-columns: repeat(6, minmax(2rem,1fr));
   }
 }
 @media screen and (min-width: 1920px) {
