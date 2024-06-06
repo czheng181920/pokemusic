@@ -1,9 +1,9 @@
-import Image from 'next/image';
+import HobbyImage from './HobbyImage';
 
 export default function Pause() {
   return (
     <div className="controls-container">
-      <Image 
+      <HobbyImage 
       className="pause-button" 
       src={`/backgrounds/pause-button.png`} 
       alt='Pause Music'

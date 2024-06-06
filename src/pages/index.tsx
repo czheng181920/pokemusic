@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image';
-
 import { Container } from '../features/background/Container';
+import HobbyImage from '../features/pokeForm/HobbyImage';
 
 const IndexPage: NextPage = () => {
   return (
@@ -15,7 +14,7 @@ const IndexPage: NextPage = () => {
         <div className="rightflex">
           <footer className="footer-button-container2">
             <a href="https://github.com/czheng181920/pokemusic/blob/main/README.md">
-              <Image 
+              <HobbyImage 
                   className="spotify-logo" 
                   src={`/backgrounds/github-mark-white.png`} 
                   alt='Github Link'
@@ -26,7 +25,7 @@ const IndexPage: NextPage = () => {
           </footer>
           {/* TODO: implement download playlist button */}
           {/* <div className="footer-button-container">
-            <Image 
+            HobbyImage 
               className="download-button" 
               src={`/backgrounds/download-button.png`} 
               alt='back button'

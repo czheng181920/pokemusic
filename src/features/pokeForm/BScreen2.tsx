@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { useAppSelector, useAppDispatch } from '../../hooks'
+import HobbyImage from './HobbyImage';
 import {
   getGenre,
   getDetails,
@@ -36,7 +36,7 @@ export default function BScreen2() {
           <div className="absolute">
             <div className="rightflex">
               <div className="footer-button-container">
-                <Image 
+                <HobbyImage 
                   className="spotify-logo" 
                   src={`/backgrounds/spotify-logo.png`} 
                   alt='Spotify Logo'
@@ -45,7 +45,7 @@ export default function BScreen2() {
                 />
               </div>
               <button type='button' className="footer-button-container" onClick={(e) => dispatch(clearOpenAIOutput())} >
-                <Image 
+                <HobbyImage 
                   className="back-arrow hover-style" 
                   src={`/backgrounds/back-arrow.png`} 
                   alt='Back Arrow'
@@ -55,7 +55,7 @@ export default function BScreen2() {
               </button>
               {/* TODO: implement download playlist button */}
               {/* <div className="footer-button-container">
-                <Image 
+                <HobbyImage 
                   className="download-button" 
                   src={`/backgrounds/download-button.png`} 
                   alt='back button'

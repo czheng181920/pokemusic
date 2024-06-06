@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import pokenames from './pokemonMasterlist.json';
 import { JSX } from 'react';
+import HobbyImage from './HobbyImage'; 
 
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import {
@@ -12,8 +12,7 @@ import {
 import SelectArrow from '../background/SelectArrow';
 
 export default function PokeGrid() {
-  const dispatch = useAppDispatch()
-
+  const dispatch = useAppDispatch();
   let pokeImgList: JSX.Element[]  = [];
 
   function dispatchPokemon(pokename: string, pokedexNum: number){
@@ -37,7 +36,7 @@ export default function PokeGrid() {
         onClick={(e) => dispatchPokemon(pokenames.names[i], i)}
       >
         <div className="crop7">
-          <Image 
+          <HobbyImage 
             className="gen-7-icons" 
             src={`/pokeicons/icons-gen7/${i}.png`} 
             alt={"Select " + pokenames.names[i]} 

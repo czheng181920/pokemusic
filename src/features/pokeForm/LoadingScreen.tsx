@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { usePrefersReducedMotion } from '../../hooks';
+import HobbyImage from './HobbyImage';
 export default function LoadingScreen() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -8,7 +8,7 @@ export default function LoadingScreen() {
       <div className="pure-u-1 bottom">
         <div className="loading-container">
           { prefersReducedMotion ?
-            <Image 
+            <HobbyImage 
               className="loading" 
               src={`/backgrounds/loading.png`} 
               alt='loading...'
@@ -16,7 +16,7 @@ export default function LoadingScreen() {
               sizes="100vw"
             />
           :
-            <Image 
+            <HobbyImage 
               className="loading" 
               src={`/backgrounds/loading.gif`} 
               alt='loading...'

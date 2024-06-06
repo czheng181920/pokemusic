@@ -1,8 +1,9 @@
-import Image from 'next/image';
+import HobbyImage from "../pokeForm/HobbyImage";
+
 export default function SelectArrow() {
   return (
     <div className="select-arrow-container">
-      <Image 
+      <HobbyImage 
         className="select-arrow" 
         src={`/backgrounds/select-arrow.png`} 
         alt=""

@@ -1,5 +1,4 @@
 import PokeGrid from "./PokeGrid-Gen7";
-import Image from 'next/image';
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import {
   getPokeInput,
@@ -8,6 +7,7 @@ import {
   increaseGenNum, 
   decreaseGenNum
 } from './pokeSlice'
+import HobbyImage from "./HobbyImage";
 export default function BScreen1() {
   const dispatch = useAppDispatch()
 
@@ -20,7 +20,7 @@ export default function BScreen1() {
         <div className="pure-u-1 pure-u-md-7-8">
           <div className="box-container">
             <div className="box-wallpaper-container">
-              <Image 
+              <HobbyImage 
                 className="box-wallpaper" 
                 src={`/backgrounds/box-wallpaper.png`} 
                 alt={""} 
@@ -36,7 +36,7 @@ export default function BScreen1() {
                     className="box-arrow-container pointer-cursor"
                     onClick={(e) => dispatch(decreaseGenNum())}
                   >
-                    <Image 
+                    <HobbyImage 
                       className="header-left-arrow" 
                       src={`/backgrounds/box-left.png`} 
                       alt={"View Previous Generation"} 
@@ -47,7 +47,7 @@ export default function BScreen1() {
                 </div>
                 <div className="pure-u-5-6">
                   <div className="box-header-container">
-                    <Image 
+                    <HobbyImage 
                       className="box-header" 
                       src={`/backgrounds/box-header.png`} 
                       alt={""} 
@@ -65,7 +65,7 @@ export default function BScreen1() {
                     className="box-arrow-container pointer-cursor"
                     onClick={(e) => dispatch(increaseGenNum())}
                   >
-                    <Image 
+                    <HobbyImage 
                       className="header-right-arrow" 
                       src={`/backgrounds/box-right.png`} 
                       alt={"View Next Generation"} 

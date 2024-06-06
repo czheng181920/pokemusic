@@ -137,7 +137,7 @@ export const pokeSlice = createSlice({
       state.pokedexNumber = -1;
     },
     increaseGenNum: (state) => {
-      if (state.generation >= 7 ){
+      if (state.generation >= 5 ){
         state.generation = 1;
       } else {
         state.generation++
@@ -145,7 +145,7 @@ export const pokeSlice = createSlice({
     },
     decreaseGenNum: (state) => {
       if (state.generation <= 1 ){
-        state.generation = 7;
+        state.generation = 5;
       } else {
         state.generation--;
       }

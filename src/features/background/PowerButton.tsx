@@ -1,8 +1,9 @@
-import Image from 'next/image';
+import HobbyImage from "../pokeForm/HobbyImage";
+
 export default function PowerButton() {
   return (
     <div className="power-container">
-        <Image 
+        <HobbyImage 
         className="powerbutton"
         src={`/3ds/power.png`} 
         alt={""} 

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { selectText } from './texts.js';
 import Text from './Text';
 import { useAppSelector, useAppDispatch } from '../../hooks'
@@ -10,6 +9,7 @@ import {
 } from './pokeSlice'
 import { useState } from 'react';
 import SelectArrow2 from '../background/SelectArrow2';
+import HobbyImage from './HobbyImage';
 
 export default function Screen2() {
   const dispatch = useAppDispatch()
@@ -31,7 +31,7 @@ export default function Screen2() {
       <div className="pure-g">
         <div className="pure-u-1">
           <div className="selected-pokemon-name-container">
-            <Image 
+            <HobbyImage 
               className="master-ball" 
               src={`/backgrounds/master-ball.png`} 
               alt=''
@@ -45,7 +45,7 @@ export default function Screen2() {
         </div>
         <div className="pure-u-1 centerY">
           <div className="selected-pokemon-container">
-            <Image 
+            <HobbyImage 
               className="selected-poke" 
               src={`/official-artwork/${pokedexnumber}.png`} 
               alt={pokename}

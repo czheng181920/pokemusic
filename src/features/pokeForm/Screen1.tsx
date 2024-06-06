@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { welcomeText } from './texts.js';
 import Text from './Text';
+import HobbyImage from './HobbyImage';
 
 export default function Screen1() {
   return (
@@ -8,7 +8,7 @@ export default function Screen1() {
       <div className="pure-g">
         <div className="pure-u-1 centerY">
           <div className="profoak-container">
-            <Image 
+            <HobbyImage 
               className="profOak" 
               src={`/backgrounds/prof-oak.png`} 
               alt="professor oak"
