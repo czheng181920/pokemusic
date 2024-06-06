@@ -4,44 +4,23 @@ import { useEffect, useRef, useState } from 'react';
 // used this tutorial: https://reacthustle.com/blog/react-auto-scroll-to-bottom-tutorial
 export default function TypeWriterText(props: { text: string; }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [text, setText] = useState("");
-  const [started, setStarted] = useState(false);
-  var timer: NodeJS.Timer;
-  const dummyText = props.text;
-  const handleGenerate = () => {
-    if (started) {
-      return;
-    }
-    
-    setStarted(true);
-    let i = -1;
-    
-    timer = setInterval(() => {
-      i++;
-      if (i === dummyText.length - 1) clearInterval(timer);
-      setText((prev) => prev + dummyText[i]);
-      ref.current?.scrollIntoView({
-        behavior: "instant" as ScrollBehavior,
-        block: "end" as ScrollLogicalPosition
-      })
-    }, 20);
-  };
-  const handleReset = () => {
-    setText("");
-    clearInterval(timer);
-    setStarted(false);
-  };
-
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  let delay = 30;
   useEffect(() => {
-    handleGenerate();
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
+    if (currentIndex < props.text.length) {
+      const timeout = setTimeout(() => {
+        setCurrentText(prevText => prevText + props.text[currentIndex]);
+        setCurrentIndex(prevIndex => prevIndex + 1);
+      }, delay);
+  
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, delay, props.text]);
   return (
     <div className="textbox">
       <div className="text-content">
-        {!text ? "_" : text}
+        {currentText}
         <div ref={ref} style={{marginTop: '2%'}} />
       </div>
     </div>

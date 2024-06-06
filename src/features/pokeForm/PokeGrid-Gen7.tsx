@@ -43,7 +43,6 @@ export default function PokeGrid() {
             alt={"Select " + pokenames.names[i]} 
             fill
             sizes="30vw"
-            
           />
         </div>
         {pokedexnumber == i ? <SelectArrow /> : <div className="div"></div> }
