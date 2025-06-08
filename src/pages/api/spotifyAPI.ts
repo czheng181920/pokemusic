@@ -1,90 +1,109 @@
 const console = require('console'); //debugging
 
-export default async function getSpotifySongs(req: any, res: any) { 
+export default async function getSpotifySongs(req: any, res: any) {
   const console = require('console');
 
   var client_id = process.env.SPOTIFY_CLIENT_ID;
   var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
- 
-  const obj = req.body;  //supposed to look like testJSON
+
+  const obj = req.body; //supposed to look like testJSON
   const paramsobj = new URLSearchParams(obj);
-  paramsobj.append("type", "playlist");
-  paramsobj.append("limit", "1")
+  paramsobj.append('type', 'playlist');
+  paramsobj.append('limit', '1');
   var params = paramsobj.toString();
   var trackNum = 0;
   var itemsResponse = [];
 
-  try{
+  try {
     //get access token
-    const response = await fetch('https://accounts.spotify.com/api/token',{
+    const response = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
       headers: {
-          'Authorization': 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64')),
-          'Content-Type': 'application/x-www-form-urlencoded'
+        Authorization:
+          'Basic ' +
+          Buffer.from(client_id + ':' + client_secret).toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: 'grant_type=client_credentials'
+      body: 'grant_type=client_credentials',
     });
-    const repo = await response.json()
+    const repo = await response.json();
 
     //fetching playlists..
-    const playlists = await fetch(`https://api.spotify.com/v1/search?${params}`,{
-      method: 'GET',
-      headers: {
-          'Authorization': `Bearer ${repo.access_token}`,
-          'Content-Type': 'application/x-www-form-urlencoded'
-      },
-    });
-    const playlistsJSON = await playlists.json()
+    const playlists = await fetch(
+      `https://api.spotify.com/v1/search?${params}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${repo.access_token}`,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+    const playlistsJSON = await playlists.json();
     if (playlists.status !== 200) {
-      throw playlistsJSON.error || new Error(`Request failed with status ${playlists.status}`);
+      throw (
+        playlistsJSON.error ||
+        new Error(`Request failed with status ${playlists.status}`)
+      );
     }
-    
+
     //fetching playlist tracks
-    const songs = await fetch(`${playlistsJSON.playlists.items[0].tracks.href}`,{
-      method: 'GET',
-      headers: {
-          'Authorization': `Bearer ${repo.access_token}`,
-          'Content-Type': 'application/x-www-form-urlencoded'
-      },
-    });
-    const songsJSON = await songs.json()
+    const songs = await fetch(
+      `${playlistsJSON.playlists.items[0].tracks.href}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${repo.access_token}`,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+    const songsJSON = await songs.json();
     if (songs.status !== 200) {
-      throw songsJSON.error || new Error(`Request failed with status ${songs.status}`);
+      throw (
+        songsJSON.error ||
+        new Error(`Request failed with status ${songs.status}`)
+      );
     }
     //don't want to get all the songs in the beginning of the playlist (usually results in repeat artists)
     //to get a variety of songs, space out the indicies
     var i = 0;
-    while ( trackNum <6 && i < songsJSON.items.length){
-      if (songsJSON.items[i].track.type == "track"){
-        itemsResponse.push(songsJSON.items[i].track)
+    while (trackNum < 6 && i < songsJSON.items.length) {
+      if (songsJSON.items[i].track.type == 'track') {
+        itemsResponse.push(songsJSON.items[i].track);
         trackNum++;
       }
-      i+= Math.floor(songsJSON.items.length/6)
+      i += Math.floor(songsJSON.items.length / 6);
     }
     //if there are not enough songs (6 songs) in the playlist, just default to searching tracks
-    if (trackNum < 6){
+    if (trackNum < 6) {
       var paramsobj2 = new URLSearchParams(obj);
       var numTracksLeft: number = 6 - trackNum;
-      paramsobj2.append("type", "track");
-      paramsobj2.append("limit", `${numTracksLeft}`)
+      paramsobj2.append('type', 'track');
+      paramsobj2.append('limit', `${numTracksLeft}`);
       var params2 = paramsobj2.toString();
-      const songs2 = await fetch(`https://api.spotify.com/v1/search?${params2}`,{
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${repo.access_token}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-      });
-      const songs2JSON = await songs2.json()
+      const songs2 = await fetch(
+        `https://api.spotify.com/v1/search?${params2}`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${repo.access_token}`,
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+      const songs2JSON = await songs2.json();
       if (songs2.status !== 200) {
-        throw songs2JSON.error || new Error(`Request failed with status ${songs2.status}`);
+        throw (
+          songs2JSON.error ||
+          new Error(`Request failed with status ${songs2.status}`)
+        );
       }
       itemsResponse.push(...songs2JSON.tracks.items);
     }
 
     res.status(200).json({ result: itemsResponse });
-
-  } catch(error:any) {
+  } catch (error: any) {
     if (error.response) {
       console.error(error.response.status, error.response.data);
       res.status(error.response.status).json(error.response.data);
@@ -93,9 +112,8 @@ export default async function getSpotifySongs(req: any, res: any) {
       res.status(500).json({
         error: {
           message: 'An error occurred during your request.',
-        }
+        },
       });
     }
   }
 }
- 
