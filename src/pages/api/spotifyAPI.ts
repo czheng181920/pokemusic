@@ -8,15 +8,21 @@ async function fetchSongPreviewURL(songName: string, limit: number = 5) {
     const result = await spotifyPreviewFinder(songName, limit);
 
     if (result.success) {
-      return result.results[0].spotifyUrl; // Return the first song's Spotify URL
+      if (!result.results || result.results.length === 0) {
+        return ''; // empty string if no results found
+      }
+      return result.results[0].previewUrls[0]; // Return the first song's Spotify URL
     } else {
       console.error('Error:', result.error);
+      return '';
     }
   } catch (error) {
     if (error instanceof Error) {
       console.error('Error:', error.message);
+      return '';
     } else {
       console.error('Error:', error);
+      return '';
     }
   }
 }
@@ -27,7 +33,7 @@ function addSongPreviewsToResponse(songs: any[]) {
       const previewUrl = await fetchSongPreviewURL(song.name);
       return {
         ...song,
-        url: previewUrl || [],
+        preview_url: previewUrl || [],
       };
     })
   );
@@ -50,7 +56,7 @@ export default async function getSpotifySongs(req: any, res: any) {
   const paramsobj = new URLSearchParams({
     q: rawQuery,
     type: 'playlist',
-    limit: '1',
+    limit: '20',
   }).toString();
   var params = paramsobj.toString();
   var trackNum = 0;
@@ -94,13 +100,15 @@ export default async function getSpotifySongs(req: any, res: any) {
       console.error('Playlists missing in search response:', playlistsJSON);
       return res.status(404).json({ error: 'Playlists not found in search' });
     }
-    const playlist = playlistsJSON.playlists.items.find(
+    let playlist = playlistsJSON.playlists.items.find(
       (item: any) => item?.tracks && item.tracks.total >= 6
     );
-
     if (!playlist) {
-      console.error('No playlist found with at least 6 tracks');
-      return res.status(404).json({ error: 'No suitable playlist found' });
+      console.log('No playlist found with at least 6 tracks, trying with 1');
+      // If no playlist with at least 6 tracks, try to find one with at least 1 track
+      playlist = playlistsJSON.playlists.items.find(
+        (item: any) => item?.tracks && item.tracks.total >= 1
+      );
     }
     // check for correct structure of playlist
     if (!playlist.tracks || !playlist.tracks.href) {
