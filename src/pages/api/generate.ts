@@ -2,7 +2,7 @@ import { Configuration, OpenAIApi } from "openai";
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type ResponseData = {
-  [key: string]: any; //find a way to type this better
+  [key: string]: any; 
 }
 
 const configuration = new Configuration({
